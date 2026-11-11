@@ -131,8 +131,8 @@ Cadeia de build verificada nesta máquina (comandos executados de verdade, não 
 
 ```bash
 dotnet build -v q --nologo                    # 0 errors, 0 warnings
-dotnet build -v q --nologo                    # 14 projetos, 0 erros, 0 avisos
-dotnet test  -v q --nologo                    # Aprovado: 72, Falha: 0
+dotnet build -v q --nologo                    # 13 projetos, 0 erros, 0 avisos
+dotnet test  -v q --nologo                    # Aprovado: 90, Falha: 0  (94 no total com Desktop.Tests)
 dotnet test tests/Landipay.Desktop.Tests -v q --nologo   # Aprovado: 4, Falha: 0
 dotnet ef migrations add InitialCreate -p src/Landipay.Infrastructure -o Persistence/Migrations
 dotnet ef database update -p src/Landipay.Infrastructure   # aplica no SQLite
@@ -206,6 +206,23 @@ Build, run e testes serão documentados aqui **com comandos reais e verificados*
 
 ---
 
+## Integração contínua
+
+`.github/workflows/ci.yml` roda em `windows-latest` a cada push/PR na `main`:
+
+```bash
+dotnet restore Landipay.sln --nologo
+dotnet build   Landipay.sln -c Release --no-restore --nologo -warnaserror
+dotnet test    Landipay.sln -c Release --no-build --nologo --logger trx --results-directory TestResults
+```
+
+- `-warnaserror`: o projeto está em 0 avisos; se voltar a ter, o gate trava antes de virar dívida.
+- Os `.trx` sobem como artefato `resultados-testes` (um arquivo por assembly de teste).
+- **Estado real:** o repositório é local (sem remote). O workflow está validado (YAML + os três comandos executados nesta máquina, 94/94), mas **o primeiro run no GitHub só acontece depois de um push** — não há run verde para citar ainda.
+- O que o pipeline **não** faz: gerar/assinar o MSI e rodar a varredura de segredos. Cada um tem sua tarefa em [docs/08](docs/08-referencia-e-gaps.md) (P0-9/P0-10 e a varredura de `docs/05` §3).
+
+---
+
 ## Convenções do projeto
 
 1. **Zero segredo no binário.** ✅ Executado: 116 arquivos / 77,8 MB varridos no publish Release, 0 achados, com controle positivo provando que o detector funciona ([docs/05](docs/05-testes-seguranca.md) §3).
@@ -226,7 +243,7 @@ O Landipay é **dois executáveis**, com backend e banco compartilhados:
 | `Landipay.Pos.exe` | frente de caixa: venda, pagamento, sangria/suprimento, turno | "Landipay Caixa" |
 
 ```bash
-# build (14 projetos)
+# build (13 projetos: 11 de produção + 2 de teste)
 dotnet build
 
 # executar direto do build
@@ -277,10 +294,10 @@ App Admin e recusa a escolha fora do escopo (auditado).
 
 ### Estado e pendências
 
-- Build: 14 projetos, 0 erros, 0 avisos.
+- Build: 13 projetos, 0 erros, 0 avisos (o CI roda com `-warnaserror`).
 - Testes: **94 verdes** (`dotnet test`: 90 em `Landipay.Tests` + 4 em `Landipay.Desktop.Tests`).
 - Pendências para uso comercial: fiscal (NFC-e/SAT/DANFE), TEF/POS/Pix, consumo da outbox,
-  backup/restore, impressão de cupom, exportação, CI, assinatura de binários — e, desta correção:
+  backup/restore, impressão de cupom, exportação, assinatura de binários — e, desta correção:
   **JWT de sessão na API** (com `perms`/`app`), **claim `apps` na licença** e **manifesto de update
   com hash por pacote**.
 

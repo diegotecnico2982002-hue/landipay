@@ -6,8 +6,8 @@
 Estado nesta máquina (11/11/2026):
 
 ```
-dotnet build -c Release        → 14 projetos, 0 erros, 0 avisos
-dotnet test                    → 72 aprovados, 0 falhas
+dotnet build -c Release        → 13 projetos, 0 erros, 0 avisos
+dotnet test                    → 94 aprovados, 0 falhas
 varredura de segredos (publish) → 0 achados em 116 arquivos / 77,8 MB
 ```
 

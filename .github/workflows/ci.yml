@@ -49,10 +49,12 @@ jobs:
       - name: Build (Release)
         run: dotnet build Landipay.sln -c Release --no-restore --nologo -warnaserror
 
+      # "trx" sem LogFileName: cada assembly de teste gera o seu arquivo. Com nome
+      # fixo, o segundo projeto sobrescreve o resultado do primeiro.
       - name: Testes (Release)
         run: >
           dotnet test Landipay.sln -c Release --no-build --nologo
-          --logger "trx;LogFileName=resultados.trx"
+          --logger trx
           --results-directory TestResults
 
       - name: Publicar resultados dos testes

@@ -209,16 +209,21 @@ Aprovado! – Com falha: 0, Aprovado: 4, Ignorado: 0, Total: 4  – Landipay.Des
 Com falha! – Com falha: 2, Aprovado: 88, Ignorado: 0, Total: 90 – Landipay.Tests.dll
 ```
 
-Execução depois do P0-1:
+Execução depois do P0-1 (saída real do MSBuild, sem resumo):
 
 ```
-$ dotnet build Landipay.sln -c Release --nologo
-ok dotnet build: 14 projects, 0 errors, 0 warnings
+$ dotnet build Landipay.sln -c Release --nologo -warnaserror
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
 
-$ dotnet test Landipay.sln -c Release --nologo
-Aprovado! – Com falha: 0, Aprovado: 4,  Ignorado: 0, Total: 4  – Landipay.Desktop.Tests.dll
-Aprovado! – Com falha: 0, Aprovado: 90, Ignorado: 0, Total: 90 – Landipay.Tests.dll
+$ dotnet test Landipay.sln -c Release --no-build --nologo
+Aprovado!  – Com falha: 0, Aprovado: 4,  Ignorado: 0, Total: 4  – Landipay.Desktop.Tests.dll
+Aprovado!  – Com falha: 0, Aprovado: 90, Ignorado: 0, Total: 90 – Landipay.Tests.dll
 ```
+
+13 projetos na solução (11 de produção + 2 de teste) — o "14 projetos" que circulava nos
+documentos era contagem de uma versão anterior da solução, corrigida em `README`, `docs/05` e aqui.
 
 **Total atual: 94 testes, 94 aprovados, 0 falhas.**
 
@@ -231,10 +236,10 @@ Aprovado! – Com falha: 0, Aprovado: 90, Ignorado: 0, Total: 90 – Landipay.Te
 
 | Item | Evidência | Status | Observação |
 |---|---|---|---|
-| Build 14 projetos, 0 erros/avisos | saída acima | **Provado** | — |
+| Build 13 projetos, 0 erros/avisos (`-warnaserror`) | saída em §4.1 | **Provado** | — |
 | Venda ponta a ponta na UI real (bipar → pagar → finalizar) | `docs/03-cliente.md` §8.1 (7 passos com captura e conferência no banco) | **Provado em 10/11** | não reexecutado nesta sessão |
-| Fechamento de turno com diferença R$ 0,00 | `docs/03` §8.1 passo 7; `CaixaTurno.DiferencaConferencia` | **Provado** | 2 testes de conferência hoje vermelhos pela semente |
-| Relatórios por período (R$ 56,70 / ticket 28,35 na semente; R$ 43,29 no fluxo real) | `Fase5RelatoriosTests` (8 testes) + `docs/06 §4` | **Parcial** (6 de 8 verdes) | — |
+| Fechamento de turno com diferença R$ 0,00 | `docs/03` §8.1 passo 7; `CaixaTurno.DiferencaConferencia` | **Provado** | 2 testes de conferência estavam vermelhos pela semente; verdes desde o P0-1 |
+| Relatórios por período (R$ 56,70 / ticket 28,35 na semente; R$ 43,29 no fluxo real) | `Fase5RelatoriosTests` (8 testes) + `docs/06 §4` | **Provado** (8/8) | — |
 | Sangria/suprimento | `ServicoDeCaixa.cs:120,123` + `[RelayCommand] Sangria/Suprimento` | **Provado** | — |
 | Auditoria append-only | `20261111054456_InitialCreate.cs:618,627` (2 triggers) | **Provado por código** | trigger testado? não há teste específico |
 | Outbox transacional | entidade `OutboxMensagens` + `docs/03` §8.1 ("1 mensagem") | **Provado que grava** | **sem consumidor** |
@@ -419,7 +424,7 @@ Regra: **cada linha cabe em uma fase com gate** e precisa de evidência de execu
 | ID | Gap | Fase | Impacto | Esforço | Depende de |
 |---|---|---|---|---|---|
 | **P0-1** | ✅ **Concluído** — suíte vermelha (2 testes) + documentação divergente (72/89/94; licença prometida e ausente) | 7 | **G** | P | — |
-| **P0-2** | Sem git, sem CI | 7 | **G** | P | — |
+| **P0-2** | ✅ **Concluído** — repositório git + CI (workflow validado; run no GitHub depende de remote) | 7 | **G** | P | — |
 | **P0-3** | Licença só validada no instalador → não é cobrável | 8 | **G** | P | — |
 | **P0-4** | Backup automático + restore inexistentes | 8 | **G** | M | P0-2 |
 | **P0-5** | Revogação online / validação periódica | 8 | G | M | P0-3, API JWT |
@@ -469,13 +474,24 @@ Automação de UI como skill reutilizável; mesas/comandas (só se entrar no seg
 - **Prova de execução:** saída colada em §4.1 e em `docs/05 §2`.
 - **Esforço real:** P (~20 min).
 
-### P0-2 · Git + CI
+### P0-2 · Git + CI — ✅ **concluído em 11/11/2026** (run remoto pendente)
 
 - **Gap:** `git rev-parse` → *not a git repository*; sem pipeline.
-- **Mudança:** `git init`, `.gitignore` (já existe, revisar `dist/`, `AppData/`), primeiro commit; workflow `build + test` em Windows; `dotnet build -warnaserror` opcional.
-- **Aceite:** clone limpo → `dotnet test` verde no CI; nenhum artefato de build versionado.
-- **Prova:** URL/captura do run verde.
-- **Esforço:** P.
+- **Mudança executada:**
+  - `git init -b main` + `.gitignore` estendido: `dist/`, `packaging/payload/` (77 MB regenerados por `packaging/build-msi.ps1`), `TestResults/`, `*.trx`, `*.log`, `*.wixpdb`, `*.msi`, `AppData/`.
+  - `.gitattributes`: repositório em LF, working tree Windows em CRLF; binários marcados como `binary`.
+  - Primeiro commit: **181 arquivos, 5,4 MB** de blob, nenhum `.dll`/`.exe`/`.msi` versionado.
+  - `.github/workflows/ci.yml`: `restore` → `build -c Release -warnaserror` → `dotnet test --logger trx`, artefato `resultados-testes`, `windows-latest`, `timeout-minutes: 20`.
+- **Aceite:** clone limpo → `dotnet test` verde; nenhum artefato de build versionado.
+- **Prova de execução local (os três comandos do workflow, na ordem):**
+  ```
+  dotnet restore  → Todos os projetos estão atualizados para restauração.
+  dotnet build -c Release --no-restore -warnaserror → Compilação com êxito. 0 Aviso(s) 0 Erro(s)
+  dotnet test -c Release --no-build --logger trx → 94/94, 2 arquivos .trx gerados
+  ```
+- **Limite honesto:** `gh` não está instalado nesta máquina e não existe remote — **não há run verde do GitHub para citar**. O YAML foi validado por parser (`on: push/pull_request/workflow_dispatch`, job `build-e-testes`, 7 steps) e os comandos foram executados aqui; o primeiro run real acontece no primeiro push.
+- **Pegadinha encontrada:** `--logger "trx;LogFileName=resultados.trx"` faz o segundo assembly **sobrescrever** o resultado do primeiro (o VSTest avisa "sobrescrevendo o arquivo"). Corrigido para `--logger trx`, que gera um arquivo por assembly.
+- **Esforço real:** P (~25 min).
 
 ### P0-3 · Licença que expira e bloqueia
 
