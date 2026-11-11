@@ -52,20 +52,28 @@ jobs:
       - name: Build (Release)
         run: dotnet build Landipay.sln -c Release --no-restore --nologo -warnaserror
 
-      # "trx" sem LogFileName: cada assembly de teste gera o seu arquivo. Com nome
-      # fixo, o segundo projeto sobrescreve o resultado do primeiro.
-      - name: Testes (Release)
+      # Nome de arquivo EXPLÍCITO e pasta separada por assembly. O padrão do VSTest é
+      # <usuário>_<máquina>_<timestamp com segundos>: dois assemblies iniciados no mesmo
+      # segundo gravam o MESMO arquivo e um sobrescreve o outro (foi o que derrubou o run #3,
+      # com o passo de testes verde e a contagem em 90).
+      - name: Testes de unidade (Landipay.Tests)
         run: >
-          dotnet test Landipay.sln -c Release --no-build --nologo
-          --logger trx
-          --results-directory TestResults
+          dotnet test tests/Landipay.Tests -c Release --no-build --nologo
+          --logger "trx;LogFileName=unitarios.trx"
+          --results-directory TestResults/unitarios
+
+      - name: Testes de fluxo de UI (Landipay.Desktop.Tests)
+        run: >
+          dotnet test tests/Landipay.Desktop.Tests -c Release --no-build --nologo
+          --logger "trx;LogFileName=fluxo-ui.trx"
+          --results-directory TestResults/fluxo-ui
 
       # Soma os .trx e falha se a contagem não bater: sucesso do passo passa a
       # significar "94 testes rodaram e passaram", não apenas "o comando saiu 0".
       - name: Conferir contagem da suíte
         shell: pwsh
         run: |
-          $arquivos = Get-ChildItem TestResults/*.trx -ErrorAction Stop
+          $arquivos = Get-ChildItem TestResults -Recurse -Filter *.trx -ErrorAction Stop
           if (-not $arquivos) { throw "Nenhum .trx encontrado em TestResults" }
 
           $total = 0; $passou = 0; $falhou = 0
@@ -75,6 +83,7 @@ jobs:
             $total  += [int]$c.total
             $passou += [int]$c.passed
             $falhou += [int]$c.failed + [int]$c.error
+            "  {0,-16} total={1} aprovados={2} falhas={3}" -f $f.Name, $c.total, $c.passed, $c.failed
           }
 
           "arquivos: $($arquivos.Count) · total: $total · aprovados: $passou · falhas: $falhou" |
@@ -83,7 +92,7 @@ jobs:
 
           if ($falhou -ne 0) { throw "$falhou teste(s) com falha" }
           if ($total -ne [int]$env:TESTES_ESPERADOS) {
-            throw "Esperado $env:TESTES_ESPERADOS testes, encontrado $total. Atualize TESTES_ESPERADOS no workflow se a suíte mudou de tamanho."
+            throw "Esperado $env:TESTES_ESPERADOS testes, encontrado $total (arquivos: $($arquivos.Name -join ', ')). Atualize TESTES_ESPERADOS no workflow se a suíte mudou de tamanho."
           }
 
       - name: Publicar resultados dos testes
