@@ -1,0 +1,15 @@
+### VARREDURA REAL (sem canary; deve dar 0 achados)
+
+====================================================================
+VARREDURA DE SEGREDOS — Landipay
+====================================================================
+raiz:             C:\Users\diego\landipay\packaging\payload
+arquivos varridos: 110
+bytes varridos:    79.517.265
+duracao:           11.82s
+achados:           0
+suprimidos:        0
+--------------------------------------------------------------------
+====================================================================
+json: docs/_evidence/etapa6-T4-audit-scan.json
+EXIT=0

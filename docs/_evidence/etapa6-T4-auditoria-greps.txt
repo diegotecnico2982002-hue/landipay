@@ -1,0 +1,14 @@
+### G4.6 (refinado) — chave privada em FONTE (cs/xaml/json/xml), excluindo bin/obj
+TOTAL_FONTE=0
+
+### G4.6b — mesmo grep no binario Release publicado (payload)
+TOTAL_PAYLOAD=0
+
+### G3.7 — SQL bruto / interpolado em Infrastructure
+src/Landipay.Infrastructure/Persistence/Migrations/20261111054456_InitialCreate.cs:616:            migrationBuilder.Sql(
+src/Landipay.Infrastructure/Persistence/Migrations/20261111054456_InitialCreate.cs:625:            migrationBuilder.Sql(
+
+### G3.4/G3.5 — triggers append-only na migration
+src/Landipay.Infrastructure/Persistence/Migrations/20261111054456_InitialCreate.cs:613:            // ── LogAuditoria é append-only ───────────────────────────────────────
+
+### Chaves publicas embutidas (G4.3 esperado presente)

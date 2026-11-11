@@ -1,0 +1,14 @@
+Execução de teste para C:\Users\diego\landipay\tests\Landipay.Tests\bin\Release\net8.0\Landipay.Tests.dll (.NETCoreApp,Version=v8.0)
+Versão do VSTest 17.11.2 (x64)
+
+Execução de teste para C:\Users\diego\landipay\tests\Landipay.Desktop.Tests\bin\Release\net8.0-windows\Landipay.Desktop.Tests.dll (.NETCoreApp,Version=v8.0)
+Versão do VSTest 17.11.2 (x64)
+
+Iniciando execução de teste, espere...
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Iniciando execução de teste, espere...
+1 arquivos de teste no total corresponderam ao padrão especificado.
+
+Aprovado!  – Com falha:     0, Aprovado:     6, Ignorado:     0, Total:     6, Duração: 4 s - Landipay.Desktop.Tests.dll (net8.0)
+
+Aprovado!  – Com falha:     0, Aprovado:   102, Ignorado:     0, Total:   102, Duração: 16 s - Landipay.Tests.dll (net8.0)

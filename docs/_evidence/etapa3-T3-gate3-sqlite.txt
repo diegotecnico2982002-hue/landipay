@@ -1,0 +1,36 @@
+### copia de trabalho: gate3.db (a partir de %APPDATA%\Landipay\landipay.db)
+
+### G3.3 — tabelas
+CaixaTurnos            Lojas                  Permissoes           
+ConfigLicencas         MovimentosCaixa        Produtos             
+Empresas               OutboxMensagens        UsuarioPapeis        
+EstoqueMovimentos      Pagamentos             Usuarios             
+ItensVenda             Papeis                 Vendas               
+LogAuditoria           PapelPermissoes        __EFMigrationsHistory
+
+QTDE_TABELAS=18
+
+### triggers
+trg_LogAuditoria_BloqueiaUpdate|LogAuditoria
+trg_LogAuditoria_BloqueiaDelete|LogAuditoria
+
+### G3.4 — UPDATE em LogAuditoria
+Error: stepping, LogAuditoria e append-only: UPDATE nao permitido (19)
+exit=19
+
+### G3.5 — DELETE em LogAuditoria
+Error: stepping, LogAuditoria e append-only: DELETE nao permitido (19)
+exit=19
+
+### conteudo atual de LogAuditoria (amostra)
+22
+Error: in prepare, no such column: CriadoEm
+  SELECT Id,Acao,CriadoEm FROM LogAuditoria ORDER BY Id DESC LIMIT 8;
+                 ^--- error here
+
+### G3.6 — venda + outbox na MESMA transacao: rollback remove os DOIS
+banco de trabalho: C:/Users/diego/AppData/Local/hermes/cache/scratch/gate3.db (copia do banco de producao)
+antes: Vendas=0 Outbox=0
+dentro da transacao: Vendas=1 Outbox=1
+apos ROLLBACK:       Vendas=0 Outbox=0
+(numeros 'apos ROLLBACK' iguais aos 'antes' = os DOIS sumiram juntos)

@@ -1,0 +1,6 @@
+### G2.5 — mesmas chaves x:Key nos dois temas
+chaves no Dark : 23
+chaves no Light: 23
+so no Dark     : nenhuma
+so no Light    : nenhuma
+DIFERENCAS     : 0

@@ -1,0 +1,24 @@
+### G4.2 — testes da fase 4 (licenca ES256 + update Ed25519)
+Versão do VSTest 17.11.2 (x64)
+
+Iniciando execução de teste, espere...
+1 arquivos de teste no total corresponderam ao padrão especificado.
+
+Aprovado!  – Com falha:     0, Aprovado:    40, Ignorado:     0, Total:    40, Duração: 3 s - Landipay.Tests.dll (net8.0)
+
+### algoritmos de fato usados no codigo
+src/Landipay.Backend/Seguranca/EmissorDeLicenca.cs:48:        var chave = new ECDsaSecurityKey(_chaves.ChaveLicenca) { KeyId = _chaves.KidLicenca };
+src/Landipay.Backend/Seguranca/EmissorDeLicenca.cs:107:            IssuerSigningKey = new ECDsaSecurityKey(_chaves.ChaveLicenca) { KeyId = _chaves.KidLicenca },
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:19:    public ECDsa ChaveLicenca { get; }
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:25:    private ProvedorDeChaves(ECDsa chaveLicenca, string kidLicenca, byte[] sementeUpdate, byte[] chavePublicaUpdate, string kidUpdate)
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:37:        var ecdsa = ECDsa.Create(ECCurve.NamedCurves.nistP256);
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:38:        var (semente, publica) = AssinaturaEd25519.GerarPar();
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:54:            var ecdsa = ECDsa.Create();
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:58:            var publica = AssinaturaEd25519.ChavePublicaDe(semente);
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:60:            if (publica.Length != AssinaturaEd25519.TamanhoChavePublica)
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:61:                throw new InvalidOperationException("Chave pública Ed25519 inválida no arquivo de chaves.");
+src/Landipay.Backend/Seguranca/ProvedorDeChaves.cs:86:    private static string KidDe(ECDsa chave, string prefixo) =>
+src/Landipay.Backend/Servicos/ServicoDeAtualizacao.cs:94:        var assinatura = AssinaturaEd25519.Assinar(payload, _chaves.SementeUpdate);
+src/Landipay.Updates/AssinaturaEd25519.cs:11:public static class AssinaturaEd25519
+src/Landipay.Updates/AssinaturaEd25519.cs:20:        var priv = new Ed25519PrivateKeyParameters(rng);
+src/Landipay.Updates/AssinaturaEd25519.cs:27:        return new Ed25519PrivateKeyParameters(sementePrivada, 0).GeneratePublicKey().GetEncoded();

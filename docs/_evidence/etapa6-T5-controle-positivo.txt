@@ -1,0 +1,19 @@
+### CONTROLE POSITIVO (canary plantado; deve DETECTAR)
+controle positivo: canary plantado em C:\Users\diego\landipay\packaging\payload\_canary.txt
+controle positivo: canary removido
+
+====================================================================
+VARREDURA DE SEGREDOS — Landipay
+====================================================================
+raiz:             C:\Users\diego\landipay\packaging\payload
+arquivos varridos: 111
+bytes varridos:    79.517.285
+duracao:           12.36s
+achados:           0
+suprimidos:        1
+controle positivo: DETECTADO
+--------------------------------------------------------------------
+  (suprimido) [P2] _canary.txt — arquivo do controle positivo, criado e apagado pelo proprio scanner
+====================================================================
+json: docs/_evidence/etapa6-T5-controle-positivo.json
+EXIT=0

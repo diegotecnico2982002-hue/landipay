@@ -1,0 +1,42 @@
+### T7 — greps de seguranca na pasta do legado (somente leitura, nada executado)
+pasta: C:\Program Files (x86)\Syntax Tecnologia\Syntax Plus PDV
+arquivos: 252 | tamanho: 637M
+
+--- A1/A5: acesso remoto (rustdesk|anydesk|teamviewer) ---
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/MaterialDesignThemes.Wpf.dll
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/Syntax.Controler.dll
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/Syntax.Framework.dll
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/Syntax.HelpDesk.dll
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/Syntax.Model.dll
+arquivos com ocorrencia: 5
+
+--- A4: senha/password em texto claro (configs) ---
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/Config.ini
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/ConfigMaquina.xml
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/PreVenda.exe.config
+/c/Program Files (x86)/Syntax Tecnologia/Syntax Plus PDV/Senha.ini
+configs com ocorrencia: 4
+
+--- A2: URLs http://ftp:// (download sem TLS) ---
+configs com ocorrencia: 0
+
+--- linhas exatas (VALORES MASCARADOS: o arquivo de evidencia vai para o repo) ---
+  arquivo: Config.ini (115 bytes)
+    SENHA =***MASCARADO***
+
+  arquivo: ConfigMaquina.xml (14334 bytes)
+      <ImprimeSenha>***MASCARADO***</ImprimeSenha>
+      <SenhaTecnicaTefPayGo />
+      <SenhaLojistaTefPayGo />
+
+  arquivo: PreVenda.exe.config (13583 bytes)
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=***MASCARADO***">
+          <section name="PreVenda.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=***MASCARADO***" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        <add name="PreVenda.Properties.Settings.PreVendaConnectionString" connectionString="Data Source=***MASCARADO***;Initial Catalog=***MASCARADO***;User ID=***MASCARADO***;Password=***MASCARADO***;TrustServerCertificate=***MASCARADO***" providerName="System.Data.SqlClient" />
+      <userSettings>
+      </userSettings>
+
+  arquivo: Senha.ini (26 bytes)
+    [CONTROLESENHA]
+    SENHA=0
+

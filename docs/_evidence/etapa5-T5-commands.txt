@@ -1,0 +1,25 @@
+### G5.5 / R8 — auditoria de Commands (assets/audit-commands.py)
+commands declarados via [RelayCommand]: 17
+bindings de Command no XAML        : 17
+commands com referencia no XAML    : 17
+commands ORFAOS                    : 0
+
+--- detalhe ---
+  binding    AbrirTurnoCommand                src\Landipay.Ui\ViewModels\CaixaViewModel.cs:89 (metodo AbrirTurno)
+  binding    AdicionarCommand                 src\Landipay.Ui\ViewModels\CaixaViewModel.cs:116 (metodo Adicionar)
+  binding    AtualizarCommand                 src\Landipay.Ui\ViewModels\LoginViewModel.cs:190 (metodo Atualizar)
+  binding    AvancarCommand                   src\Landipay.Installer\ViewModels\InstaladorViewModel.cs:151 (metodo AvancarAsync)
+  binding    BuscarCnpjCommand                src\Landipay.Installer\ViewModels\InstaladorViewModel.cs:256 (metodo BuscarCnpjAsync)
+  binding    CriarAdministradorCommand        src\Landipay.Ui\ViewModels\LoginViewModel.cs:108 (metodo CriarAdministradorAsync)
+  binding    EntrarCommand                    src\Landipay.Ui\ViewModels\LoginViewModel.cs:71 (metodo EntrarAsync)
+  binding    FecharTurnoCommand               src\Landipay.Ui\ViewModels\CaixaViewModel.cs:206 (metodo FecharTurno)
+  binding    FinalizarCommand                 src\Landipay.Ui\ViewModels\CaixaViewModel.cs:161 (metodo Finalizar)
+  binding    HojeCommand                      src\Landipay.Ui\ViewModels\RelatoriosViewModel.cs:59 (metodo Hoje)
+  binding    MesCommand                       src\Landipay.Ui\ViewModels\RelatoriosViewModel.cs:77 (metodo Mes)
+  binding    PagarCommand                     src\Landipay.Ui\ViewModels\CaixaViewModel.cs:145 (metodo Pagar)
+  binding    SangriaCommand                   src\Landipay.Ui\ViewModels\CaixaViewModel.cs:179 (metodo Sangria)
+  binding    SeteDiasCommand                  src\Landipay.Ui\ViewModels\RelatoriosViewModel.cs:68 (metodo SeteDias)
+  binding    SuprimentoCommand                src\Landipay.Ui\ViewModels\CaixaViewModel.cs:182 (metodo Suprimento)
+  binding    VerificarCommand                 src\Landipay.Ui\ViewModels\LicencaViewModel.cs:65 (metodo Verificar)
+  binding    VoltarCommand                    src\Landipay.Ui\ViewModels\AcessoNegadoViewModel.cs:28 (metodo Voltar)
+EXIT=0

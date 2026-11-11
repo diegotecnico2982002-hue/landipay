@@ -1,0 +1,46 @@
+======================================================================
+LANDIPAY — VALIDAÇÃO FINAL   2026-11-11 18:40:55
+======================================================================
+
+### 1/5 — dotnet build -c Release
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+RESULTADO: OK (0 erros, 0 avisos)
+
+### 2/5 — dotnet test -c Release
+Aprovado!  – Com falha:     0, Aprovado:     6, Ignorado:     0, Total:     6, Duração: 6 s - Landipay.Desktop.Tests.dll (net8.0)
+Aprovado!  – Com falha:     0, Aprovado:   102, Ignorado:     0, Total:   102, Duração: 26 s - Landipay.Tests.dll (net8.0)
+TOTAL DE TESTES APROVADOS: 108
+RESULTADO: OK
+
+### 3/5 — varredura de segredos (payload publicado)
+arquivos varridos: 110
+bytes varridos:    79.517.265
+achados:           0
+suprimidos:        0
+-- controle positivo (canary plantado) --
+controle positivo: canary plantado em C:\Users\diego\landipay\packaging\payload\_canary.txt
+controle positivo: canary removido
+controle positivo: DETECTADO
+  (suprimido) [P2] _canary.txt — arquivo do controle positivo, criado e apagado pelo proprio scanner
+RESULTADO: OK (0 achados reais + controle positivo detectado)
+
+### 4/5 — MSI: desinstalar
+EXITCODE=0
+arquivos em %LOCALAPPDATA%\Landipay: 0
+landipay.db preservado: SIM
+
+### 5/5 — MSI: instalar de novo
+EXITCODE=0
+arquivos instalados: 110
+atalhos no Desktop: 2
+ARP: Landipay PDV 1.1.0  (hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{03AB32C5-4C3E-47DF-B009-3F677E8E39A4})
+RESULTADO: OK
+
+### SHA-256 do MSI
+180B85957701365F09CBA145C37F284FB091364A97BCCEFC6DC87A46BB701A20
+
+======================================================================
+VALIDAÇÃO FINAL: TUDO OK (0 falhas)
+======================================================================

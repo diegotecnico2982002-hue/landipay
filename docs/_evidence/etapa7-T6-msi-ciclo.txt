@@ -1,0 +1,14 @@
+=== PÓS-DESINSTALAÇÃO ===
+arquivos em %LOCALAPPDATA%\Landipay: 0
+landipay.db preservado: SIM
+sha256 db: \6654c23255d1c9cc3c7e27d09ad3943
+atalhos no Desktop: 0
+ARP existe: False
+
+=== REINSTALAR ===
+EXITCODE=0
+arquivos instalados: 110
+sha256 db pos-install: \6654c23255d1c9cc3c7e27d09ad3943
+atalhos Desktop: 2
+ARP: AUSENTE
+WOW6432Node tem Landipay? False

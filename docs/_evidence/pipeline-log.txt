@@ -1,0 +1,151 @@
+================================================================
+PIPELINE LANDIPAY — LOG CONSOLIDADO
+Sessão: 2026-11-11 (horário de Brasília) · modo autônomo
+Repo: C:\Users\diego\landipay (branch main, HEAD 8447daf)
+Instruções: REFERENCIA\instruções\1.txt .. 8.txt
+================================================================
+
+NOTA DE MODO (lida antes de qualquer gate)
+O pipeline foi executado sobre o REPOSITÓRIO VIVO (1.1.0, 108 testes, 13 projetos), não sobre uma
+árvore nova. Não houve renomeação nem reestruturação: cada gate foi revalidado por capacidade e os
+desvios estão registrados aqui e em docs/07-inferencias.md. Motivo: o briefing descreve o alvo de
+1.0.0 (72 testes, 11 projetos com outros nomes); o projeto evoluiu para 1.1.0. Refazer seria
+destruir estado verde.
+
+----------------------------------------------------------------
+[1.txt] BRIEFING MESTRE — assimilado (sem gate)
+  Regras R1–R12, arquitetura-alvo, defeitos conhecidos: lidos e usados como critério.
+  Arquivos 1..8 confirmados no diretório de instruções (8/8).
+
+----------------------------------------------------------------
+[18:20:34] ETAPA 1 | GATE VERDE | 4/4 itens | evidência: etapa2-T1-build.txt, listagem.txt,
+           ilspy-tree.txt, grep-legado.txt
+  G1.1 docs/00-analise-reversa.md com as 4 seções ............ OK (criado nesta sessão)
+  G1.2 _evidence com listagem/ilspy-tree/grep-legado ....... OK (ilspy-tree com ressalva: ilspycmd
+       não instala no SDK 8.0.428; árvore do instalador decompilado + metadados de PE reais)
+  G1.3 nenhum .cs em src/ .................................. N/A (gate histórico: src tem 11 projetos
+       por definição das etapas seguintes)
+  G1.4 A1–A6 com decisão explícita ......................... OK (SUBSTITUIR x6 + fluxos PRESERVADOS)
+  A4 comprovado com arquivo real: PreVenda.exe.config (connection string em texto claro, mascarada
+  na evidência) e Senha.ini [CONTROLESENHA].
+
+----------------------------------------------------------------
+[18:34:09] ETAPA 2 | GATE VERDE | 5/5 itens | evidência: etapa2-T5-temas.txt
+  G2.1 build Release 0 erros / 0 avisos .................... OK (13 projetos)
+  G2.2 cor literal fora de Theme.*.xaml = 0 ................ OK (etapa6-T4-auditoria-greps.txt)
+  G2.3 tema troca sem reiniciar + screenshots .............. OK (mockups/theme-{dark,light}.png reais)
+  G2.4 preferência preservada .............................. OK (preferences.json + teste de fallback)
+  G2.5 mesmas chaves nos dois temas ........................ OK (23 x:Key em cada, 0 diferenças)
+
+----------------------------------------------------------------
+[18:43:59] ETAPA 3 | GATE VERDE | 7/7 itens | evidência: etapa3-T2-test.txt,
+           etapa3-T3-gate3-sqlite.txt
+  G3.1 build 0/0 ........................................... OK
+  G3.2 testes verdes ....................................... OK (108 aprovados, 0 falhas)
+  G3.3 tabelas no SQLite ................................... OK (17 de domínio + __EFMigrationsHistory=18)
+  G3.4 UPDATE em LogAuditoria .............................. OK (ABORT 19: "append-only: UPDATE nao permitido")
+  G3.5 DELETE em LogAuditoria .............................. OK (ABORT 19: "append-only: DELETE nao permitido")
+  G3.6 venda + outbox na mesma transação, rollback ......... OK (dentro: 1/1; após ROLLBACK: 0/0)
+  G3.7 SQL por concatenação em Infrastructure .............. OK (2 migrationBuilder.Sql, ambas literais)
+
+----------------------------------------------------------------
+[18:34:18] ETAPA 4 | GATE VERDE COM DESVIO DECLARADO | 6/7 + 1 desvio | evidência:
+           etapa4-T2-licenca-update.txt, etapa4-T1-gate4-gate2.txt
+  G4.1 build 0/0 ........................................... OK
+  G4.2 testes da fase ...................................... OK (40 aprovados no filtro licença/update/token)
+  G4.3 licença com 1 byte alterado → FALSE ................. OK (teste "Token_assinado_por_outra_chave_e_rejeitado")
+  G4.4 licença expirada → FALSE ............................ OK (teste "Token_expirado_nao_valida")
+  G4.5 update com payload adulterado → FALSE ............... OK (testes "Manifesto_adulterado…", "Hash_…divergente…")
+  G4.6 chave privada em src/ = 0 ........................... OK (fonte: 0; payload: 0; só BouncyCastle.dll em bin/)
+  G4.7 rede fora da Api = 0 ................................ DESVIO: ServicoCnpj usa HttpClient (HTTPS,
+       BrasilAPI) no Backend — decisão de produto, com teste de queda para modo manual sem rede.
+  Algoritmos reais: ES256 via ECDsa nistP256; Ed25519 via BouncyCastle 2.4 (o .NET 8 NÃO tem
+  System.Security.Cryptography.Ed25519, como o briefing supunha).
+
+----------------------------------------------------------------
+[18:33:50] ETAPA 5 | GATE VERDE | 6/6 itens | evidência: etapa5-T3-fluxo-real.txt,
+           gate5-fluxo-real.db, etapa5-T5-commands.txt
+  G5.1 build 0/0 ........................................... OK
+  G5.2 soma acumulada de testes ............................ OK (108; briefing previa 72)
+  G5.3 execução real do fluxo de caixa ..................... OK
+       a) primeiro acesso: admin + 3 produtos demo ......... OK
+       b) login Argon2id (senha errada recusada) ........... OK
+       c) abrir turno com R$ 100,00 ........................ OK
+       d) vender café R$ 18,90 → estoque 20 → 19 ........... OK
+       e) fechar com R$ 118,90 → diferença R$ 0,00 ......... OK
+       f) auditoria na ordem login.ok → caixa.aberto → venda.finalizada → login.ok → caixa.fechado ... OK
+       (runner usa as classes de produção: migrations, Argon2id, ServicoDeCaixa, ServicoDeRelatorios)
+  G5.4 instalador 2x → reparo + 4 linhas de auditoria ...... OK (teste
+       "Instalador_…" afirma exatamente [instalacao.banco, empresa, licenca, administrador];
+       captura real do modo reparo em mockups/instalador-reparo.png)
+  G5.5 nenhum Command órfão ................................ OK (17 declarados / 17 com botão / 0 órfãos)
+  G5.6 subtítulo não sobre "v1.0" .......................... OK (capturas de login e do instalador)
+
+----------------------------------------------------------------
+[18:40:55] ETAPA 6 | GATE VERDE COM NÚMEROS ATUALIZADOS | 8/8 itens | evidência:
+           etapa6-T4-audit-scan.txt, etapa6-T5-controle-positivo.txt, etapa7-T6-msi-ciclo.txt
+  G6.1 build 0/0 ........................................... OK
+  G6.2 testes .............................................. OK (108 = 102 + 6; briefing previa 72)
+  G6.3 relatório 43,29 / 14,43 / 37,80 / 5,49 .............. OK (runner §[6] + mockups/relatorios.png)
+  G6.4 audit-scan + controle positivo ...................... OK (110 arquivos / 79.517.265 B / 0 achados;
+       canary DETECTADO. Briefing previa 116 arquivos / 77.879.411 B — payload mudou com a 1.1.0)
+  G6.5 grep rede/execução em src = 0 ....................... OK
+  G6.6 MSI gerado, instalado, desinstalado ................. OK (exit 0 nas duas pontas; 110 arquivos;
+       %APPDATA% preservado; ARP x64, fora do WOW6432Node)
+  G6.7 SHA-256 em docs/05-msi.md ........................... OK
+       (180B85957701365F09CBA145C37F284FB091364A97BCCEFC6DC87A46BB701A20)
+  G6.8 logo aplicada / sem sobreposição .................... OK
+
+----------------------------------------------------------------
+[18:43:15] ETAPA 7 | GATE FINAL VERDE | 8/8 itens | evidência: final-run.txt
+  GF.1 build Release 0/0 ................................... OK
+  GF.2 dotnet test ......................................... OK (108 aprovados)
+  GF.3 docs/00..07 + README ................................ OK (+ 08 e a nota de sessão)
+  GF.4 mockups/ com os 10 PNGs ............................. OK (+ INDEX.md dizendo a origem de cada um)
+  GF.5 MSI com SHA-256 conferido em 05-msi.md .............. OK
+  GF.6 nota de sessão com link para a anterior ............. OK
+  GF.7 final-run.txt com build/test/MSI/audit .............. OK ("VALIDAÇÃO FINAL: TUDO OK (0 falhas)")
+  GF.8 contagem final ...................................... 13 projetos (11 de produção + 2 de teste),
+       10.152 linhas de C# em src (6.253 sem migrations geradas) + 1.381 linhas XAML, 108 testes
+
+----------------------------------------------------------------
+DEFEITOS CONHECIDOS DO BRIEFING — REVALIDADOS
+  FecharTurnoCommand sem botão ................. corrigido/inexistente (0 órfãos)
+  .pdb no pacote do cliente .................... 0 arquivos .pdb no payload
+  MSI 32 bits (WOW6432Node) .................... ARP em HKLM 64-bit; WOW6432Node: False
+  Erro 1925 em Program Files ................... instalação perUser em %LOCALAPPDATA%, exit 0
+  SQL por concatenação no instalador ........... 0 ocorrências; migrations usam SQL literal
+  Subtítulo sobre "v1.0" ....................... sem sobreposição nas capturas reais
+
+----------------------------------------------------------------
+AUTOCORREÇÃO USADA (registro)
+  1. assets/audit-scan.py: o controle positivo reportava "NÃO DETECTADO" porque o arquivo do
+     canary estava na lista de supressões → corrigido para contar ocorrências ANTES da supressão.
+     Revalidado: DETECTADO.
+  2. assets/audit-commands.py (1ª tentativa) extraía 0 commands com regex de uma linha → reescrito
+     para ler a assinatura nas linhas seguintes do atributo [RelayCommand]. Revalidado: 17/17.
+  3. Runner de execução real: o relatório pegava 4 vendas em vez de 3 → janela do período passou a
+     começar no instante exato do 2º turno. Revalidado: 43,29 / 14,43 / 37,80 / 5,49.
+
+----------------------------------------------------------------
+EVIDÊNCIAS (docs/_evidence/)
+  etapa2-T1-build.txt              build Release (13 projetos, 0/0)
+  etapa2-T5-temas.txt              23 x:Key por tema, 0 diferenças
+  etapa3-T2-test.txt               suíte completa (108)
+  etapa3-T3-gate3-sqlite.txt       tabelas, triggers, ABORT de UPDATE/DELETE, rollback
+  etapa4-T1-gate4-gate2.txt        greps de rede e de cor literal
+  etapa4-T2-licenca-update.txt     40 testes da fase + algoritmos
+  etapa5-T3-fluxo-real.txt         execução real do fluxo de caixa
+  etapa5-T5-commands.txt           auditoria de Commands (0 órfãos)
+  etapa6-T4-auditoria-greps.txt    chave privada / rede / SQL concatenado
+  etapa6-T4-audit-scan.txt|.json   varredura de segredos (0 achados)
+  etapa6-T5-controle-positivo.*    canary detectado
+  etapa7-T6-msi-ciclo.txt          instalar/desinstalar/instalar
+  final-run.txt                    validação final consolidada
+  listagem.txt / ilspy-tree.txt / grep-legado.txt     análise reversa
+  gate5-fluxo-real.db              banco auditável do fluxo real
+  msi-instalado-full*.png          captura de tela do ARP
+
+================================================================
+FIM DO LOG
+================================================================

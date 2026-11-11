@@ -1,0 +1,19 @@
+### G2.5 — mesmas chaves x:Key nos dois temas
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "<stdin>", line 3, in chaves
+  File "C:\Users\diego\AppData\Local\hermes\tools\python-3.14.7+20260901-win32-x64\Lib\pathlib\__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\diego\AppData\Local\hermes\tools\python-3.14.7+20260901-win32-x64\Lib\pathlib\__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'src\\Landipay.Theme\\Theme.Dark.xaml'
+
+### G4.7 — rede em Backend/Updates (o resto do sistema e offline)
+src/Landipay.Backend/Servicos/ServicoCnpj.cs:29:    private readonly HttpClient _http;
+src/Landipay.Backend/Servicos/ServicoCnpj.cs:34:    public ServicoCnpj(HttpClient http, string urlBase = "https://brasilapi.com.br/api/cnpj/v1/", TimeProvider? relogio = null)
+TOTAL=2
+
+### G6.5 (repetido) — rede/execucao em src/
+TOTAL_REAL=0

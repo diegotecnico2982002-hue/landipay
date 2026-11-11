@@ -1,0 +1,21 @@
+{
+  "raiz": "C:\\Users\\diego\\landipay\\packaging\\payload",
+  "arquivos": 111,
+  "bytes": 79517285,
+  "achados": [],
+  "suprimidos": [
+    {
+      "padrao": "P2",
+      "rotulo": "password=",
+      "arquivo": "_canary.txt",
+      "offset": 0,
+      "amostra": "passwo…",
+      "suprimido": "arquivo do controle positivo, criado e apagado pelo proprio scanner"
+    }
+  ],
+  "padroes_detectados": [
+    "P2"
+  ],
+  "duracao_s": 12.36,
+  "controle_positivo": true
+}

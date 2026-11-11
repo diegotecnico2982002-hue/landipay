@@ -1,0 +1,63 @@
+### T2 — arvore de namespaces / inventario de binarios do legado
+### REGISTRO DE HONESTIDADE (R11): o ILSpy 8.2 esta instalado em C:\Users\diego\tools\ILSpy
+### (GUI). O ilspycmd (CLI) NAO pode ser instalado neste ambiente:
+###   'A versao do formato [do pacote NuGet da ferramenta] e superior a versao compativel' (SDK 8.0.428).
+### Portanto a arvore de namespaces dos binarios do Gestor NAO foi extraida nesta execucao.
+### O que segue e o que FOI obtido por execucao real.
+
+=== A. Inventario por tipo de arquivo (252 arquivos / 637 MB) ===
+    233 dll
+      5 config
+      3 ini
+      3 exe
+      2 xml
+      1 zip
+      1 Temp
+      1 olb
+      1 msi
+      1 ico
+      1 chm
+
+=== B. Executaveis e bibliotecas principais (metadados reais do PE) ===
+
+Nome                                  MB Produto                            Versao      
+----                                  -- -------                            ------      
+PreVenda.exe                      157,54 PreVenda                           1.0.0.0     
+Syntax.Controler.dll               22,78 Syntax.Controler                   1.0.0.0     
+Syntax.DocsFiscais.dll             19,56 DFe                                1.0.0.0     
+ACBrFramework.Net.dll              15,85 ACBrFramework.Net                  0.9.7.8     
+Syncfusion.PdfViewer.WPF.dll       15,62 Syncfusion Essential PdfViewer WPF 21.2460.10.0
+MaterialDesignThemes.Wpf.dll        9,15 MaterialDesignColors.Wpf           4.9.0       
+Microsoft.ReportViewer.Common.dll   8,62 Microsoft SQL Server               15.0.1586.0 
+Syncfusion.Pdf.Base.dll             7,02 Syncfusion Essential PDF Base      21.2460.10.0
+Syncfusion.XlsIO.Base.dll           5,95 Syncfusion Essential XlsIO Base    21.2460.10.0
+Syncfusion.DocIO.Base.dll           5,56 Syncfusion Essential DocIO Base    21.2460.10.0
+
+
+
+
+
+=== C. Arvore de namespaces REAL do instalador do legado ===
+    fonte: C:\Users\diego\Desktop\SyntaxInstaller-descompilado (75 arquivos .cs decompilados do SyntaxInstaller.exe)
+FramePFX.Themes
+FramePFX.Themes.Attached
+SyntaxInstaller
+SyntaxInstaller.Converters
+SyntaxInstaller.Data
+SyntaxInstaller.Models
+SyntaxInstaller.Models.Configs
+SyntaxInstaller.Models.DTOs
+SyntaxInstaller.Models.Enums
+SyntaxInstaller.Models.Logging
+SyntaxInstaller.Models.StaticData
+SyntaxInstaller.Properties
+SyntaxInstaller.Services
+SyntaxInstaller.ViewModels
+SyntaxInstaller.Views
+SyntaxInstaller.Views.Controls
+
+    arquivos .cs por namespace:
+72
+
+=== D. Telas WPF/XAML citadas nos binarios do Gestor (por nome de recurso) ===
+    503 telas XAML e 116 tabelas/views: ver docs/08-referencia-e-gaps.md secao 1 e anexo 08-inventario-referencia.csv

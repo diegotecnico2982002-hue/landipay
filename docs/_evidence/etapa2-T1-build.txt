@@ -1,0 +1,21 @@
+  Determinando os projetos a serem restaurados...
+  Todos os projetos estão atualizados para restauração.
+  Landipay.Updates -> C:\Users\diego\landipay\src\Landipay.Updates\bin\Release\net8.0\Landipay.Updates.dll
+  Landipay.Theme -> C:\Users\diego\landipay\src\Landipay.Theme\bin\Release\net8.0-windows\Landipay.Theme.dll
+  Landipay.Backend -> C:\Users\diego\landipay\src\Landipay.Backend\bin\Release\net8.0\Landipay.Backend.dll
+  Landipay.Domain -> C:\Users\diego\landipay\src\Landipay.Domain\bin\Release\net8.0\Landipay.Domain.dll
+  Landipay.Infrastructure -> C:\Users\diego\landipay\src\Landipay.Infrastructure\bin\Release\net8.0\Landipay.Infrastructure.dll
+  Landipay.Client -> C:\Users\diego\landipay\src\Landipay.Client\bin\Release\net8.0\Landipay.Client.dll
+  Landipay.Api -> C:\Users\diego\landipay\src\Landipay.Api\bin\Release\net8.0\Landipay.Api.dll
+  Landipay.Ui -> C:\Users\diego\landipay\src\Landipay.Ui\bin\Release\net8.0-windows\Landipay.Ui.dll
+  Landipay.Pos -> C:\Users\diego\landipay\src\Landipay.Pos\bin\Release\net8.0-windows\Landipay.Pos.dll
+  Landipay.Admin -> C:\Users\diego\landipay\src\Landipay.Admin\bin\Release\net8.0-windows\Landipay.Admin.dll
+  Landipay.Installer -> C:\Users\diego\landipay\src\Landipay.Installer\bin\Release\net8.0-windows\Landipay.Installer.dll
+  Landipay.Desktop.Tests -> C:\Users\diego\landipay\tests\Landipay.Desktop.Tests\bin\Release\net8.0-windows\Landipay.Desktop.Tests.dll
+  Landipay.Tests -> C:\Users\diego\landipay\tests\Landipay.Tests\bin\Release\net8.0\Landipay.Tests.dll
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:03.59
