@@ -7,7 +7,7 @@ Estado nesta máquina (11/11/2026):
 
 ```
 dotnet build -c Release        → 13 projetos, 0 erros, 0 avisos
-dotnet test                    → 94 aprovados, 0 falhas
+dotnet test                    → 108 aprovados, 0 falhas
 varredura de segredos (publish) → 0 achados em 116 arquivos / 77,8 MB
 ```
 
@@ -28,7 +28,7 @@ Cada anti-padrão do sistema legado, o que o Landipay faz no lugar e **onde isso
 
 ---
 
-## 2. Inventário de testes (94)
+## 2. Inventário de testes (108)
 
 | Arquivo | Testes | Cobre |
 |---|---|---|
@@ -40,13 +40,15 @@ Cada anti-padrão do sistema legado, o que o Landipay faz no lugar e **onde isso
 | `Fase5RelatoriosTests.cs` | 8 | somas do relatório, forma de pagamento, produtos, sangria/suprimento, diferença de caixa, limite de período, loja isolada |
 | `SegregacaoAdminCaixaTests.cs` | 11 | matriz papel × permissão, Admin sem caixa, negativa auditada, `apps` por papel |
 | `RateLimitingTests.cs` | 2 | 429 com `Retry-After` em política sensível; saúde ilimitada |
-| `Landipay.Desktop.Tests` | 4 | primeiro acesso cria admin + semeia catálogo; senhas divergentes; senha curta; login inválido |
-| **Total** | **94** | 90 em `Landipay.Tests` + 4 em `Landipay.Desktop.Tests` |
+| `LicencaOperacionalTests.cs` | 12 | licença em operação: ausente, válida, aviso a 7 dias, tolerância, expirada, revogada, adulterada (data esticada e chave estranha), fechar turno liberado, auditoria, tolerância não renovada offline, renovação |
+| `Landipay.Desktop.Tests` | 6 | primeiro acesso cria admin + semeia catálogo; senhas divergentes; senha curta; login inválido; **abertura bloqueada por licença** (2) |
+| **Total** | **108** | 102 em `Landipay.Tests` + 6 em `Landipay.Desktop.Tests` |
 
 Comando único: `dotnet test -v q --nologo`.
 
-> **Estado da suíte (11/11/2026):** 94/94 verdes, reexecutado depois da correção do P0-1
-> (ver `docs/08`). As duas falhas que apareceram nesta data vinham de `BancoDeTeste.Semear`
+> **Estado da suíte (11/11/2026):** **108/108 verdes** — 94 depois da correção do P0-1
+> (ver `docs/08`) e 108 depois do P0-3 (licença em operação). As duas falhas que apareceram nesta
+> data vinham de `BancoDeTeste.Semear`
 > gravar o turno com `DateTimeOffset.UtcNow` enquanto a Fase 5 filtra o período em torno de uma
 > data fixa — o teste passava no dia da âncora e quebrava no dia seguinte. `Semear` agora aceita
 > o instante (`Semear(db, Base)`), e a Fase 5 passa a âncora explicitamente.

@@ -28,18 +28,24 @@ public sealed class ServicoDeCaixa
     private readonly LandipayDbContext _db;
     private readonly TimeProvider _relogio;
     private readonly Seguranca.ServicoDeAutorizacao _autorizacao;
+    private readonly Seguranca.ServicoDeLicenca? _licenca;
 
     public ServicoDeCaixa(LandipayDbContext db, TimeProvider? relogio = null,
-        Seguranca.ServicoDeAutorizacao? autorizacao = null)
+        Seguranca.ServicoDeAutorizacao? autorizacao = null,
+        Seguranca.ServicoDeLicenca? licenca = null)
     {
         _db = db;
         _relogio = relogio ?? TimeProvider.System;
         // Autorização SEMPRE presente: sem ela nenhuma operação de caixa acontece.
         _autorizacao = autorizacao ?? new Seguranca.ServicoDeAutorizacao(db, _relogio);
+        // A licença entra pelo app (ComposicaoApp). Nula = testes que exercitam outra regra;
+        // o aplicativo nunca monta o serviço sem ela.
+        _licenca = licenca;
     }
 
     public CaixaTurno AbrirTurno(Guid lojaId, Guid usuarioId, decimal valorAbertura)
     {
+        _licenca?.ExigirOperacao("caixa.abrir", usuarioId);
         _autorizacao.Exigir(usuarioId, Domain.Seguranca.CatalogoDeAcesso.CaixaAbrir);
         var agora = _relogio.GetUtcNow();
 
@@ -61,6 +67,7 @@ public sealed class ServicoDeCaixa
 
     public Venda IniciarVenda(CaixaTurno turno, Guid usuarioId)
     {
+        _licenca?.ExigirOperacao("venda.iniciar", usuarioId);
         _autorizacao.Exigir(usuarioId, Domain.Seguranca.CatalogoDeAcesso.VendaCriar);
         if (turno.Status != StatusTurno.Aberto)
             throw new DomainException("Turno fechado não inicia venda.");
@@ -78,6 +85,7 @@ public sealed class ServicoDeCaixa
     /// </summary>
     public void FinalizarVenda(Venda venda)
     {
+        _licenca?.ExigirOperacao("venda.finalizar", venda.UsuarioId);
         _autorizacao.Exigir(venda.UsuarioId, Domain.Seguranca.CatalogoDeAcesso.VendaCriar);
         var agora = _relogio.GetUtcNow();
 
@@ -126,6 +134,7 @@ public sealed class ServicoDeCaixa
     private MovimentoCaixa RegistrarMovimento(CaixaTurno turno, TipoMovimentoCaixa tipo, decimal valor,
         string motivo, Guid usuarioId)
     {
+        _licenca?.ExigirOperacao($"caixa.{tipo.ToString().ToLowerInvariant()}", usuarioId);
         _autorizacao.Exigir(usuarioId, Domain.Seguranca.CatalogoDeAcesso.CaixaMovimentar);
         var agora = _relogio.GetUtcNow();
         var movimento = turno.RegistrarMovimento(tipo, valor, motivo, usuarioId, agora);
@@ -142,6 +151,9 @@ public sealed class ServicoDeCaixa
 
     public ResumoFechamento FecharTurno(CaixaTurno turno, Guid usuarioId, decimal valorInformado)
     {
+        // Fechar turno NÃO passa pela licença, de propósito: dinheiro já está na gaveta e a
+        // conferência precisa acontecer mesmo com licença vencida. Bloquear aqui empurraria o
+        // operador a fechar por fora, sem rastro. Vender, abrir turno e movimentar, não.
         _autorizacao.Exigir(usuarioId, Domain.Seguranca.CatalogoDeAcesso.CaixaFechar);
         var agora = _relogio.GetUtcNow();
 

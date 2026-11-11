@@ -4,7 +4,7 @@ PDV desktop para lojas de varejo — cliente WPF offline-first, backend de licen
 
 > Projeto construído do zero como **substituto seguro** de um instalador legado analisado por engenharia reversa. Nenhum código, token, senha, endpoint ou binário do fornecedor original é reutilizado — apenas o comportamento funcional foi usado como especificação, e cada anti-padrão identificado no legado está mapeado para um controle aqui (ver seção *Contrato de segurança*).
 
-**Status atual: Fases 0–5 concluídas + empacotamento MSI. Instalador de provisionamento, cliente WPF, backend de licença/update, relatórios por período, auditoria de segurança com evidência e pacote `.msi` (104 arquivos, atalhos, desinstalador) — instalado e desinstalado de verdade nesta máquina. 94 testes verdes, 10 documentos.**
+**Status atual: Fases 0–5 concluídas + empacotamento MSI. Instalador de provisionamento, cliente WPF, backend de licença/update, relatórios por período, auditoria de segurança com evidência e pacote `.msi` (104 arquivos, atalhos, desinstalador) — instalado e desinstalado de verdade nesta máquina. 108 testes verdes, 10 documentos.**
 
 ## Screenshots
 
@@ -301,7 +301,7 @@ App Admin e recusa a escolha fora do escopo (auditado).
 ### Estado e pendências
 
 - Build: 13 projetos, 0 erros, 0 avisos (o CI roda com `-warnaserror`).
-- Testes: **94 verdes** (`dotnet test`: 90 em `Landipay.Tests` + 4 em `Landipay.Desktop.Tests`).
+- Testes: **108 verdes** (`dotnet test`: 102 em `Landipay.Tests` + 6 em `Landipay.Desktop.Tests`).
 - Pendências para uso comercial: fiscal (NFC-e/SAT/DANFE), TEF/POS/Pix, consumo da outbox,
   backup/restore, impressão de cupom, exportação, assinatura de binários — e, desta correção:
   **JWT de sessão na API** (com `perms`/`app`), **claim `apps` na licença** e **manifesto de update

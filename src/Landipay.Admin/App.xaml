@@ -23,6 +23,11 @@
             <DataTemplate DataType="{x:Type vm:AcessoNegadoViewModel}">
                 <v:AcessoNegadoView />
             </DataTemplate>
+
+            <!-- Licença expirada/revogada: aparece no lugar do login. -->
+            <DataTemplate DataType="{x:Type vm:LicencaViewModel}">
+                <v:LicencaView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

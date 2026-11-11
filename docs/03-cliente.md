@@ -264,3 +264,48 @@ botão `Tema` e persiste por usuário — o app abre no último tema usado.
 Pendente: o manifesto assinado hoje cobre um pacote. O contrato para dois binários é `pacotes[]`,
 cada um com `nome`, `sha256`, `versao` e assinatura própria, mantendo a regra A3 (validar antes de
 gravar; nunca `Process.Start`).
+
+---
+
+## Atualização — Licença em operação (P0-3)
+
+**O que estava errado:** a licença era validada **só no instalador** (`ServicoInstalador.AtivarLicenca`).
+Depois de instalada, o app abria e vendia por tempo indeterminado — inclusive com licença vencida
+ou revogada. O `docs/00 §6.1` prometia "validação a cada 12 h com janela offline de 7 dias"; o código
+não fazia nada disso.
+
+**O que existe agora:**
+
+| Peça | Papel |
+|---|---|
+| `Landipay.Client.Seguranca.ServicoDeLicenca` | Avalia a licença e é a **porta de bloqueio** (`ExigirOperacao`). Estados: `licenca_ok`, `licenca_em_tolerancia`, `licenca_expirada`, `licenca_revogada`, `licenca_ausente`, `licenca_adulterada` |
+| `ConfigLicenca.Reavaliar(agora)` (domínio) | Recalcula `Ativa/EmTolerancia/Expirada` pelo relógio, sem tocar em token nem em `ExpiraEm` |
+| `ServicoDeCaixa` | Chama `ExigirOperacao` em **abrir turno, iniciar venda, finalizar venda, sangria e suprimento** |
+| `ComposicaoApp` | Avalia na abertura e no login; quando bloqueada, a primeira tela é a de licença, não o login |
+| `LicencaView` / `LicencaViewModel` | Explica o motivo, a data, os dias restantes e como renovar; botão **Verificar novamente** reavalia sem reabrir o app |
+
+**Regras que ficaram explícitas (e testadas):**
+
+- **Fechar turno continua funcionando com licença vencida.** O dinheiro já está na gaveta e a
+  conferência precisa acontecer; bloquear aqui empurraria o operador a fechar por fora, sem rastro.
+- **A tolerância offline não é renovada pela abertura do app.** `UltimaValidacaoEm` só muda em
+  validação online (renovação pelo instalador). Se cada abertura atualizasse a data, a licença
+  vencida nunca expiraria — o defeito que este controle corrige.
+- **Data esticada no banco é adulteração.** O serviço lê o `exp` do próprio token (sem confiar na
+  assinatura) e recusa quando o valor gravado é maior que o assinado.
+- **Assinatura:** quando o `ServicoDeLicenca` recebe a chave ES256 pinada, a assinatura é conferida
+  a cada avaliação. Hoje o app é montado **sem** chave pinada (`new ServicoDeLicenca(Db)`), e a tela
+  declara isso ("assinatura não conferida (sem chave pinada)") em vez de esconder. Pinagem da chave
+  pública + rotação por `kid` é o próximo passo (depende do KMS de produção).
+
+**Aviso antes do vencimento:** a partir de 7 dias do vencimento o cabeçalho mostra
+`Licença expira em N dia(s) — renove antes do vencimento.` (token `Lp.Brush.Warning`).
+
+**Prova de execução (11/11/2026):** app Caixa compilado e aberto com diretório de dados vazio —
+a janela abriu direto na tela de licença, com `licenca_ausente`, e o evento `licenca.ausente` ficou
+no `LogAuditoria`:
+
+![Tela de licença no app real](mockups/app-licenca-bloqueada.png)
+
+**Testes:** 12 em `LicencaOperacionalTests` (serviço + caixa) e 2 em `LicencaNaAberturaTests`
+(composição real do app) — suíte em 108.

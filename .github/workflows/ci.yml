@@ -20,7 +20,7 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   # Gate de contagem: o job falha se a suíte executar menos (ou mais) que isto.
   # Ao adicionar testes, atualize este número — é intencional que seja explícito.
-  TESTES_ESPERADOS: 94
+  TESTES_ESPERADOS: 108
 
 jobs:
   build-e-testes:

@@ -217,6 +217,10 @@ public partial class ShellViewModel : ObservableObject
     [ObservableProperty] private string _operador = string.Empty;
     [ObservableProperty] private string _contexto = "Landipay";
 
+    /// <summary>Aviso persistente no cabeçalho (ex.: licença perto de vencer).</summary>
+    [ObservableProperty] private string _aviso = string.Empty;
+    [ObservableProperty] private bool _temAviso;
+
     public event EventHandler? TemaAlternado;
     public Func<bool>? TemaEscuro { get; set; }
 

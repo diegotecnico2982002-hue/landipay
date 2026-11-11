@@ -225,7 +225,7 @@ Aprovado!  – Com falha: 0, Aprovado: 90, Ignorado: 0, Total: 90 – Landipay.T
 13 projetos na solução (11 de produção + 2 de teste) — o "14 projetos" que circulava nos
 documentos era contagem de uma versão anterior da solução, corrigida em `README`, `docs/05` e aqui.
 
-**Total atual: 94 testes, 94 aprovados, 0 falhas.**
+**Total depois do P0-3: 108 testes, 108 aprovados, 0 falhas** (94 do P0-1 + 14 do P0-3).
 
 | Falha (histórica) | Causa raiz (provada) | Correção aplicada |
 |---|---|---|
@@ -425,7 +425,7 @@ Regra: **cada linha cabe em uma fase com gate** e precisa de evidência de execu
 |---|---|---|---|---|---|
 | **P0-1** | ✅ **Concluído** — suíte vermelha (2 testes) + documentação divergente (72/89/94; licença prometida e ausente) | 7 | **G** | P | — |
 | **P0-2** | ✅ **Concluído** — repositório git + CI (workflow validado; run no GitHub depende de remote) | 7 | **G** | P | — |
-| **P0-3** | Licença só validada no instalador → não é cobrável | 8 | **G** | P | — |
+| **P0-3** | ✅ **Concluído** — licença avaliada na abertura e em cada operação; expirada/revogada bloqueia venda, tolerância de 7 dias contada da validação online | 8 | **G** | P | — |
 | **P0-4** | Backup automático + restore inexistentes | 8 | **G** | M | P0-2 |
 | **P0-5** | Revogação online / validação periódica | 8 | G | M | P0-3, API JWT |
 | **P0-6** | Cadastro de produto + entrada/ajuste de estoque (catálogo é read-only) | 9 | **G** | M | — |
@@ -496,12 +496,20 @@ Automação de UI como skill reutilizável; mesas/comandas (só se entrar no seg
 - **Pegadinha encontrada (duas vezes, causas diferentes):** (1) `--logger "trx;LogFileName=resultados.trx"` na solução inteira faz o segundo assembly **sobrescrever** o primeiro; trocado por `--logger trx`. (2) Só isso não bastou: o nome **padrão** do VSTest é `<usuário>_<máquina>_<timestamp com segundos>`, então dois assemblies iniciados no mesmo segundo colidem igual — foi o que derrubou o **run #3** (testes verdes, contagem 90, gate falhou: https://github.com/diegotecnico2982002-hue/landipay/actions/runs/43077134173). Correção definitiva: um passo `dotnet test` por assembly, com nome de arquivo e pasta explícitos (`unitarios.trx` em `TestResults/unitarios`, `fluxo-ui.trx` em `TestResults/fluxo-ui`) e o gate somando recursivamente. Lição: **verde não prova contagem; o gate prova** — e ele já pagou por si no primeiro uso.
 - **Esforço real:** P (~25 min).
 
-### P0-3 · Licença que expira e bloqueia
+### P0-3 · Licença que expira e bloqueia — ✅ **concluído em 11/11/2026**
 
-- **Gap:** `ValidadorDeLicencaJwt` só é chamado em `ServicoInstalador.cs:208`; `ComposicaoApp` abre sem checar; `ToleranciaOfflineDias` nunca lido.
-- **Mudança:** `src/Landipay.Ui/ComposicaoApp.cs` (validar `ConfigLicencas` ao montar, antes de `Iniciar()`); novo `ServicoDeLicenca` no cliente com cache de 12 h, janela offline `ToleranciaOfflineDias`, estados `Ativa/Expirada/Tolerancia/Revogada`; tela de aviso + modo somente-leitura; auditoria `licenca.validada`/`licenca.expirada`.
-- **Aceite:** 4 testes novos: token vencido bloqueia, dentro da tolerância avisa, offline > tolerância bloqueia, `apps` respeitado. Execução real com token vencido mostrando a tela.
-- **Esforço:** P/M.
+- **Gap:** `ValidadorDeLicencaJwt` só era chamado em `ServicoInstalador.cs:208`; o app abria e vendia com licença vencida, revogada ou ausente. `ToleranciaOfflineDias` existia no modelo e nunca era consultado.
+- **Mudança executada:**
+  - `src/Landipay.Client/Seguranca/ServicoDeLicenca.cs` (novo): estados `licenca_ok`, `licenca_em_tolerancia`, `licenca_expirada`, `licenca_revogada`, `licenca_ausente`, `licenca_adulterada`; `Avaliar()` sem escrita a cada operação, `AvaliarNoInicio()` com auditoria throttleada em 12 h, `ExigirOperacao()` lançando `LicencaBloqueadaException` e auditando `licenca.bloqueio` (1×/dia).
+  - `ConfigLicenca.Reavaliar(agora)` no domínio: recalcula `Ativa/EmTolerancia/Expirada` pelo relógio.
+  - `ServicoDeCaixa`: `ExigirOperacao` em abrir turno, iniciar venda, finalizar venda, sangria e suprimento. **Fechar turno continua liberado** (dinheiro na gaveta).
+  - `ComposicaoApp`: avalia na abertura e no login; bloqueada → `LicencaView` no lugar do login; `Shell.Aviso` com o aviso de 7 dias no cabeçalho dos dois apps.
+  - `LicencaView.xaml` + `LicencaViewModel` (novos), `DataTemplate` nos dois shells.
+- **Regras que os testes fixam:** sem licença não opera; expirada dentro da tolerância opera com aviso; expirada fora bloqueia; revogada bloqueia mesmo com data futura; `exp` do token menor que a data gravada = adulteração; chave pública estranha = adulteração; fechar turno funciona expirado; auditoria de abertura e de bloqueio; **a abertura do app não renova a tolerância**; renovação com o mesmo emissor libera.
+- **Prova de execução:** app Caixa compilado e aberto com diretório de dados vazio → abriu direto na tela de licença (`licenca_ausente`), capturado em `docs/mockups/app-licenca-bloqueada.png` (ver `docs/03`); `LogAuditoria` com `licenca.ausente`.
+- **Testes:** 12 novos (`LicencaOperacionalTests`) + 2 (`LicencaNaAberturaTests`) → **108 no total**; `TESTES_ESPERADOS` do CI atualizado para 108.
+- **Limite declarado:** o app monta o serviço **sem** chave pública pinada (`new ServicoDeLicenca(Db)`), então a assinatura não é conferida em runtime — a tela diz isso ("assinatura não conferida (sem chave pinada)"). A detecção de data esticada no banco continua valendo porque lê o `exp` do próprio token. Pinagem da chave + rotação por `kid` fica com a revogação online (P0-5).
+- **Esforço real:** P/M (~1 h 30).
 
 ### P0-4 · Backup automático + restore testado
 

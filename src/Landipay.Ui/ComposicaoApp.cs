@@ -38,6 +38,12 @@ public sealed class ComposicaoApp : IDisposable
 
     public ServicoDeAutorizacao Autorizacao { get; }
 
+    /// <summary>Licença em operação: avalia a cada abertura e alimenta o caixa com a porta de bloqueio.</summary>
+    public ServicoDeLicenca Licenca { get; }
+
+    /// <summary>Estado avaliado no início. Enquanto <c>PodeOperar</c> é falso, o app não passa do login.</summary>
+    public EstadoLicenca EstadoDaLicenca { get; private set; } = null!;
+
     public string? UltimaNegativa { get; private set; }
 
     public ComposicaoApp() : this(Aplicativo.Pos) { }
@@ -68,7 +74,8 @@ public sealed class ComposicaoApp : IDisposable
         Sessao = new SessaoService();
         Autenticacao = new ServicoDeAutenticacao(Db, Hasher);
         Autorizacao = new ServicoDeAutorizacao(Db);
-        Caixa = new ServicoDeCaixa(Db, autorizacao: Autorizacao);
+        Licenca = new ServicoDeLicenca(Db);
+        Caixa = new ServicoDeCaixa(Db, autorizacao: Autorizacao, licenca: Licenca);
         Relatorios = new ServicoDeRelatorios(Db, Autorizacao);
 
         // Papéis e permissões existem desde o primeiro start, inclusive em base antiga.
@@ -83,13 +90,55 @@ public sealed class ComposicaoApp : IDisposable
             app, TemaAtual, Path.Combine(PastaDados, "landipay.db"));
     }
 
-    public void Iniciar() => Shell.Atual = CriarLogin();
+    public void Iniciar()
+    {
+        EstadoDaLicenca = Licenca.AvaliarNoInicio();
+        AtualizarAviso();
+
+        Log.Information("Licença: {Codigo} · expira {Expira} · opera {Pode} · assinatura {Assinatura}",
+            EstadoDaLicenca.Codigo, EstadoDaLicenca.ExpiraEm, EstadoDaLicenca.PodeOperar,
+            EstadoDaLicenca.AssinaturaVerificada);
+
+        Shell.Atual = EstadoDaLicenca.PodeOperar ? CriarLogin() : CriarLicenca();
+    }
+
+    private LicencaViewModel CriarLicenca() => new(EstadoDaLicenca, App, VerificarLicenca);
+
+    /// <summary>
+    /// Reavalia a licença (botão "Verificar novamente"). É o caminho depois de renovar pelo
+    /// instalador, sem precisar fechar e abrir o app.
+    /// </summary>
+    public void VerificarLicenca()
+    {
+        EstadoDaLicenca = Licenca.AvaliarNoInicio();
+        AtualizarAviso();
+        Shell.Atual = EstadoDaLicenca.PodeOperar ? CriarLogin() : CriarLicenca();
+    }
+
+    private void AtualizarAviso()
+    {
+        Shell.Aviso = EstadoDaLicenca.ProximaDoVencimento
+            ? $"Licença expira em {EstadoDaLicenca.DiasRestantes} dia(s) — renove antes do vencimento."
+            : string.Empty;
+        Shell.TemAviso = Shell.Aviso.Length > 0;
+    }
 
     public LoginViewModel CriarLogin() =>
         new(Autenticacao, Hasher, Db, Sessao, Entrar, App);
 
     private void Entrar(SessaoUsuario sessao)
     {
+        // Reavalia no login: o app pode ter ficado aberto a noite toda e vencido no meio.
+        EstadoDaLicenca = Licenca.Avaliar();
+        AtualizarAviso();
+
+        if (!EstadoDaLicenca.PodeOperar)
+        {
+            Shell.Atual = CriarLicenca();
+            Log.Warning("Login barrado por licença: {Codigo}", EstadoDaLicenca.Codigo);
+            return;
+        }
+
         Shell.Operador = sessao.Nome;
         Shell.Contexto = $"{CatalogoDeAcesso.NomeDoApp(App)} · {sessao.Login}";
 

@@ -158,7 +158,7 @@ Esta tabela é o documento central do projeto. Cada linha é uma obrigação ver
 | Achado | Controle |
 |---|---|
 | Instalador grava `SAPWD` em `Config.ini` em texto claro e instala engine de banco no balcão | Não há engine instalada (LD-01); credencial de banco local é derivada de DPAPI + salt, nunca escrita em ini |
-| `LoginView` sem verificação de licença: app funcionava com licença expirada | **Pendente (P0-3).** Especificado: validação a cada 12 h com janela offline de 7 dias e modo somente-leitura ao expirar. Hoje só o instalador valida (`ServicoInstalador.cs:208`) — o app abre sem consultar a licença. Rastreio em `docs/08` (P0-3) |
+| `LoginView` sem verificação de licença: app funcionava com licença expirada | **Implementado (P0-3, 11/11/2026).** `ServicoDeLicenca` avalia na abertura, no login e antes de cada operação que mexe em dinheiro/estoque (`ServicoDeCaixa`); expirada fora da tolerância bloqueia abrir turno, vender e movimentar — fechar turno continua permitido. Tolerância de 7 dias contada da **última validação online**, aviso a partir de 7 dias do vencimento. Detalhe e prova em `docs/03` §"Licença em operação". Chave pública pinada (verificação de assinatura a cada avaliação) segue pendente |
 | Sem rate limit em endpoints públicos de update | Limite por IP + por `lojaId`, com backoff |
 | Sem SBOM/reprodutibilidade | `dotnet sbom` no pipeline + build determinístico |
 

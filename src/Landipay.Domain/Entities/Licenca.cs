@@ -93,6 +93,17 @@ public sealed class ConfigLicenca : Entity
     public void Revogar() => Status = StatusLicenca.Revogada;
 
     /// <summary>
+    /// Recalcula o status (Ativa / EmTolerancia / Expirada) sem tocar em ExpiraEm, token ou
+    /// última validação. É o que o serviço de licença chama a cada abertura e a cada operação:
+    /// o status passa a refletir o relógio, não o momento da instalação.
+    /// </summary>
+    public StatusLicenca Reavaliar(DateTimeOffset agora)
+    {
+        AtualizarStatus(agora);
+        return Status;
+    }
+
+    /// <summary>
     /// Licença utilizável se não revogada e (não expirou OU está dentro da janela de tolerância
     /// contada a partir da última validação online bem-sucedida).
     /// </summary>

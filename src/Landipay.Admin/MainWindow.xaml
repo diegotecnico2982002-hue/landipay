@@ -7,6 +7,11 @@
         WindowStartupLocation="CenterScreen"
         Background="{DynamicResource Lp.Brush.Page}"
         FontFamily="Segoe UI">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="56" />
@@ -29,6 +34,9 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,16,0" FontSize="12"
+                               Foreground="{DynamicResource Lp.Brush.Warning}" Text="{Binding Aviso}"
+                               Visibility="{Binding TemAviso, Converter={StaticResource BoolToVis}}" />
                     <TextBlock VerticalAlignment="Center" Margin="0,0,16,0" FontSize="12"
                                Foreground="{DynamicResource Lp.Brush.TextSecondary}" Text="{Binding Operador}" />
                     <Button Content="Início" Style="{StaticResource Lp.Button.Ghost}" Click="Inicio_Click" Margin="0,0,8,0" />
