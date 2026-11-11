@@ -220,6 +220,7 @@ dotnet test    Landipay.sln -c Release --no-build --nologo --logger trx --result
 - **Gate de contagem:** um passo em PowerShell soma os `.trx` e falha se não forem `TESTES_ESPERADOS` (94) com 0 falhas — "passo verde" passa a significar "94 testes rodaram e passaram", não só "o comando saiu 0". Ao adicionar testes, atualize a variável de ambiente no topo do workflow.
 - Os `.trx` e o `resultado.txt` sobem como artefato `resultados-testes`; o resumo da suíte aparece no *Summary* do run.
 - **Primeiro run verde:** [CI #1 — 2min24s](https://github.com/diegotecnico2982002-hue/landipay/actions/runs/43075014767) (checkout, .NET 8, cache, restore, build, testes, artefato: todos `success`).
+- **Run com o gate de contagem:** [CI #2 — 2min38s](https://github.com/diegotecnico2982002-hue/landipay/actions/runs/43076518139) — o passo *Conferir contagem da suíte* passou no runner, ou seja, **94 testes executados e 0 falhas foi verificado pela própria máquina do GitHub**, não por mim.
 - O que o pipeline **não** faz: gerar/assinar o MSI e rodar a varredura de segredos. Cada um tem sua tarefa em [docs/08](docs/08-referencia-e-gaps.md) (P0-9/P0-10 e a varredura de `docs/05` §3).
 
 ---
