@@ -18,6 +18,9 @@ env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  # Gate de contagem: o job falha se a suíte executar menos (ou mais) que isto.
+  # Ao adicionar testes, atualize este número — é intencional que seja explícito.
+  TESTES_ESPERADOS: 94
 
 jobs:
   build-e-testes:
@@ -57,10 +60,38 @@ jobs:
           --logger trx
           --results-directory TestResults
 
+      # Soma os .trx e falha se a contagem não bater: sucesso do passo passa a
+      # significar "94 testes rodaram e passaram", não apenas "o comando saiu 0".
+      - name: Conferir contagem da suíte
+        shell: pwsh
+        run: |
+          $arquivos = Get-ChildItem TestResults/*.trx -ErrorAction Stop
+          if (-not $arquivos) { throw "Nenhum .trx encontrado em TestResults" }
+
+          $total = 0; $passou = 0; $falhou = 0
+          foreach ($f in $arquivos) {
+            [xml]$x = Get-Content $f.FullName
+            $c = $x.TestRun.ResultSummary.Counters
+            $total  += [int]$c.total
+            $passou += [int]$c.passed
+            $falhou += [int]$c.failed + [int]$c.error
+          }
+
+          "arquivos: $($arquivos.Count) · total: $total · aprovados: $passou · falhas: $falhou" |
+            Tee-Object -FilePath resultado.txt
+          "### Suíte: $total testes, $passou aprovados, $falhou falhas" | Out-File $env:GITHUB_STEP_SUMMARY -Append
+
+          if ($falhou -ne 0) { throw "$falhou teste(s) com falha" }
+          if ($total -ne [int]$env:TESTES_ESPERADOS) {
+            throw "Esperado $env:TESTES_ESPERADOS testes, encontrado $total. Atualize TESTES_ESPERADOS no workflow se a suíte mudou de tamanho."
+          }
+
       - name: Publicar resultados dos testes
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: resultados-testes
-          path: TestResults
+          path: |
+            TestResults
+            resultado.txt
           if-no-files-found: warn
