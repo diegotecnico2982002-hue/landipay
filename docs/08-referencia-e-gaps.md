@@ -490,6 +490,7 @@ Automação de UI como skill reutilizável; mesas/comandas (só se entrar no seg
   dotnet test -c Release --no-build --logger trx → 94/94, 2 arquivos .trx gerados
   ```
 - **Limite honesto:** `gh` não está instalado nesta máquina e não existe remote — **não há run verde do GitHub para citar**. O YAML foi validado por parser (`on: push/pull_request/workflow_dispatch`, job `build-e-testes`, 7 steps) e os comandos foram executados aqui; o primeiro run real acontece no primeiro push.
+- **Prova de clone limpo (feita):** `git clone` para outra pasta → **181 arquivos, 0 pastas `bin`/`obj`/`dist`/`payload`**, `dotnet build -c Release -warnaserror` = 0 avisos/0 erros e `dotnet test --no-build` = **94/94**. O repositório é auto-suficiente: nada essencial ficou de fora pelo `.gitignore`.
 - **Pegadinha encontrada:** `--logger "trx;LogFileName=resultados.trx"` faz o segundo assembly **sobrescrever** o resultado do primeiro (o VSTest avisa "sobrescrevendo o arquivo"). Corrigido para `--logger trx`, que gera um arquivo por assembly.
 - **Esforço real:** P (~25 min).
 
