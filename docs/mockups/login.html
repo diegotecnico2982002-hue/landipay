@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Landipay — Login (escuro/claro)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body {
+    display: grid; place-items: center;
+    background-image: var(--glow);
+    background-repeat: no-repeat; background-position: top center;
+  }
+  .stage { width: 100%; max-width: 420px; padding: var(--space-6); }
+
+  .brand { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-8); justify-content: center; }
+  .mark {
+    width: 36px; height: 36px; border-radius: var(--radius-md);
+    background: var(--primary); display: grid; place-items: center;
+    box-shadow: var(--shadow-accent);
+  }
+  .mark svg { stroke: var(--primary-foreground); }
+  .wordmark { font-size: var(--fs-h2); font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); }
+  .wordmark span { color: var(--primary-on-surface); }
+
+  .card { padding: var(--space-8); }
+  .card h1 { margin: 0 0 var(--space-2); font-size: var(--fs-h1); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-tight); }
+  .card p.sub { margin: 0 0 var(--space-6); color: var(--text-secondary); font-size: var(--fs-sm); }
+
+  .field { margin-bottom: var(--space-4); }
+  .row-between { display: flex; align-items: center; justify-content: space-between; }
+
+  .check { display: flex; align-items: center; gap: var(--space-2); color: var(--text-secondary); font-size: var(--fs-sm); }
+  .box {
+    width: 16px; height: 16px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border-strong); background: var(--bg-inset);
+  }
+
+  .submit { width: 100%; height: 44px; margin-top: var(--space-5); }
+
+  .hint {
+    display: block; margin-top: var(--space-5); padding: var(--space-3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--divider);
+    background: var(--bg-inset);
+    color: var(--text-muted); font-size: var(--fs-xs); line-height: var(--lh-loose);
+  }
+  .hint strong { color: var(--error); font-weight: var(--fw-semibold); }
+
+  .foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: var(--space-6); color: var(--text-muted); font-size: var(--fs-xs);
+  }
+  .status { display: flex; align-items: center; gap: var(--space-2); color: var(--text-secondary); }
+  .dot { width: 6px; height: 6px; border-radius: var(--radius-pill); background: var(--success); }
+</style>
+</head>
+<body>
+
+<button class="lp-theme-toggle" id="tt" title="Alternar tema">
+  <svg id="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+  <span id="tl">Escuro</span>
+</button>
+
+<div class="stage">
+  <div class="brand">
+    <div class="mark">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7h18l-1.6 9.2a2 2 0 0 1-2 1.8H8.6a2 2 0 0 1-2-1.8Z"/>
+        <circle cx="9" cy="21" r="1"/><circle cx="17" cy="21" r="1"/>
+      </svg>
+    </div>
+    <div class="wordmark">Landi<span>pay</span></div>
+  </div>
+
+  <div class="card lp-card">
+    <h1>Entrar no caixa</h1>
+    <p class="sub">Autenticação do operador com bloqueio por tentativas.</p>
+
+    <div class="field">
+      <label class="lp-label" for="op">Operador</label>
+      <input class="lp-input" id="op" value="diego.guilherme" autocomplete="username">
+    </div>
+
+    <div class="field">
+      <div class="row-between">
+        <label class="lp-label" for="pw">Senha</label>
+        <span class="lp-caps">Argon2id</span>
+      </div>
+      <input class="lp-input" id="pw" type="password" value="••••••••••••" autocomplete="current-password">
+    </div>
+
+    <div class="row-between">
+      <label class="check"><span class="box"></span> Lembrar neste terminal</label>
+      <a href="#" style="color:var(--primary-on-surface);font-size:var(--fs-sm);text-decoration:none;">Esqueci a senha</a>
+    </div>
+
+    <button class="lp-btn lp-btn--primary submit">Entrar</button>
+
+    <div class="hint">
+      <strong>2 de 5 tentativas restantes.</strong> Após 5 falhas o usuário fica bloqueado por
+      5 minutos. Toda tentativa é registrada na auditoria local.
+    </div>
+
+    <div class="foot">
+      <span class="status"><span class="dot"></span> Licença ativa · 12 dias</span>
+      <span class="lp-mono">v0.1.0 · dev</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'lp-theme';
+  var MOON = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/>';
+  var SUN  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  function render(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    var ic = document.getElementById('ti'), lb = document.getElementById('tl');
+    if (ic) ic.innerHTML = (t === 'dark') ? MOON : SUN;
+    if (lb) lb.textContent = (t === 'dark') ? 'Escuro' : 'Claro';
+    try { localStorage.setItem(KEY, t); } catch (e) {}
+  }
+  var saved = 'dark';
+  try { saved = localStorage.getItem(KEY) || 'dark'; } catch (e) {}
+  window.lpSetTheme = render;
+  render(saved);
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('tt').addEventListener('click', function () {
+      render(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  });
+})();
+</script>
+</body>
+</html>

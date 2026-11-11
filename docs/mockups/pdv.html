@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Landipay — Frente de caixa (escuro/claro)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+  /* ── Barra superior ── */
+  .topbar {
+    display: flex; align-items: center; gap: var(--space-5);
+    height: 56px; padding: 0 var(--space-5) 0 var(--space-5);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--divider);
+    flex: 0 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: var(--space-2); }
+  .mark {
+    width: 26px; height: 26px; border-radius: var(--radius-sm);
+    background: var(--primary); display: grid; place-items: center;
+  }
+  .mark svg { stroke: var(--primary-foreground); }
+  .wordmark { font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); }
+  .wordmark span { color: var(--primary-on-surface); }
+  .sep { width: 1px; height: 22px; background: var(--divider); }
+  .ctx { display: flex; gap: var(--space-5); color: var(--text-secondary); font-size: var(--fs-sm); }
+  .ctx b { color: var(--text-primary); font-weight: var(--fw-semibold); }
+  .spacer { flex: 1; }
+  .clock { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--text-secondary); }
+  .who { display: flex; align-items: center; gap: var(--space-2); font-size: var(--fs-sm); color: var(--text-primary); }
+  .avatar {
+    width: 28px; height: 28px; border-radius: var(--radius-pill);
+    background: var(--accent-soft); color: var(--primary-on-surface);
+    display: grid; place-items: center;
+    font-size: var(--fs-xs); font-weight: var(--fw-bold);
+    border: 1px solid var(--accent-soft-border);
+  }
+
+  /* ── Corpo ── */
+  .main { flex: 1; display: grid; grid-template-columns: 1fr 400px; min-height: 0; }
+  .pane { padding: var(--space-5); display: flex; flex-direction: column; min-height: 0; gap: var(--space-4); }
+
+  .scanbar { display: flex; gap: var(--space-3); }
+  .scanbar .lp-input { height: 48px; font-family: var(--font-mono); font-size: 15px; background: var(--bg-surface); }
+  .scanbar .lp-btn { height: 48px; }
+
+  /* ── Tabela ── */
+  .tablewrap {
+    flex: 1; overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--divider);
+    background: var(--bg-surface);
+    box-shadow: var(--shadow-sm);
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    text-align: left; padding: var(--space-3) var(--space-4);
+    background: var(--bg-inset);
+    color: var(--text-muted);
+    font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+    text-transform: uppercase; letter-spacing: var(--tracking-caps);
+    border-bottom: 1px solid var(--divider);
+  }
+  thead th.num, tbody td.num { text-align: right; font-family: var(--font-mono); }
+  tbody td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--divider);
+    font-size: var(--fs-body);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--bg-inset); }
+  .name { color: var(--text-primary); font-weight: var(--fw-medium); }
+  .sku { color: var(--text-muted); font-size: var(--fs-xs); font-family: var(--font-mono); }
+  .total { color: var(--text-primary); font-weight: var(--fw-semibold); }
+
+  /* ── Painel de totais ── */
+  .totals { display: flex; flex-direction: column; gap: var(--space-4); }
+  .sumrow { display: flex; justify-content: space-between; color: var(--text-secondary); font-size: var(--fs-sm); }
+  .sumrow span:last-child { font-family: var(--font-mono); color: var(--text-primary); }
+
+  .grand {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--accent-soft-border);
+    box-shadow: var(--shadow-md);
+  }
+  .grand .lp-caps { color: var(--primary-on-surface); }
+  .grand .value {
+    margin-top: var(--space-1);
+    font-size: 40px; font-weight: var(--fw-bold);
+    letter-spacing: var(--tracking-tight);
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+  }
+
+  .pay { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .pay .lp-btn { height: 52px; }
+  .finish { height: 56px; font-size: 15px; }
+
+  /* ── Rodapé de atalhos ── */
+  .fkeys {
+    flex: 0 0 auto; display: flex; gap: var(--space-4);
+    padding: var(--space-2) var(--space-5);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--divider);
+    color: var(--text-muted); font-size: var(--fs-xs);
+  }
+  .fkeys kbd {
+    display: inline-block; min-width: 22px; text-align: center;
+    padding: 1px var(--space-2); margin-right: var(--space-2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-strong);
+    background: var(--bg-inset);
+    color: var(--text-secondary);
+    font-family: var(--font-mono); font-size: var(--fs-xs);
+  }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed; bottom: 48px; left: var(--space-5);
+    display: flex; align-items: center; gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--accent-soft-border);
+    box-shadow: var(--shadow-lg);
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+  }
+  .toast .bar { width: 3px; height: 20px; border-radius: var(--radius-pill); background: var(--success); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="mark">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7h18l-1.6 9.2a2 2 0 0 1-2 1.8H8.6a2 2 0 0 1-2-1.8Z"/>
+        <circle cx="9" cy="21" r="1"/><circle cx="17" cy="21" r="1"/>
+      </svg>
+    </div>
+    <div class="wordmark">Landi<span>pay</span></div>
+  </div>
+  <div class="sep"></div>
+  <div class="ctx">
+    <div>Loja <b>01 — Centro</b></div>
+    <div>Caixa <b>03</b></div>
+    <div>Turno <b>#A7B3</b></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="lp-chip"><span class="dot"></span> Turno aberto · 02:14</div>
+  <div class="clock">11/11/2026 14:32</div>
+  <button class="lp-theme-toggle" id="tt" title="Alternar tema" style="position:static;box-shadow:none;height:28px;">
+    <svg id="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+    <span id="tl">Escuro</span>
+  </button>
+  <div class="sep"></div>
+  <div class="who"><div class="avatar">DG</div><div>Diego G.</div></div>
+</div>
+
+<div class="main">
+  <div class="pane">
+    <div class="scanbar">
+      <input class="lp-input" placeholder="Bipe o código de barras ou digite o código do produto…" value="7891000053508">
+      <button class="lp-btn lp-btn--secondary">Buscar <span class="lp-mono" style="opacity:.6">F2</span></button>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:56px">#</th>
+            <th>Descrição</th>
+            <th class="num" style="width:90px">Qtd</th>
+            <th class="num" style="width:120px">Unitário</th>
+            <th class="num" style="width:130px">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sku">1</td>
+            <td><div class="name">Café Torrado 500g</div><div class="sku">7891000053508 · UN</div></td>
+            <td class="num">2</td><td class="num">R$ 18,90</td><td class="num total">R$ 37,80</td>
+          </tr>
+          <tr>
+            <td class="sku">2</td>
+            <td><div class="name">Leite Integral 1L</div><div class="sku">7896000000017 · UN</div></td>
+            <td class="num">6</td><td class="num">R$ 5,49</td><td class="num total">R$ 32,94</td>
+          </tr>
+          <tr>
+            <td class="sku">3</td>
+            <td><div class="name">Pão de Forma Integral</div><div class="sku">7891234567890 · UN</div></td>
+            <td class="num">1</td><td class="num">R$ 12,50</td><td class="num total">R$ 12,50</td>
+          </tr>
+          <tr>
+            <td class="sku">4</td>
+            <td><div class="name">Detergente Neutro 500ml</div><div class="sku">7891024180103 · UN</div></td>
+            <td class="num">3</td><td class="num">R$ 3,29</td><td class="num total">R$ 9,87</td>
+          </tr>
+          <tr>
+            <td class="sku">5</td>
+            <td><div class="name">Arroz Tipo 1 5kg</div><div class="sku">7896036090017 · UN</div></td>
+            <td class="num">1</td><td class="num">R$ 29,90</td><td class="num total">R$ 29,90</td>
+          </tr>
+          <tr>
+            <td class="sku">6</td>
+            <td><div class="name">Feijão Carioca 1kg</div><div class="sku">7896004000108 · UN</div></td>
+            <td class="num">2</td><td class="num">R$ 8,79</td><td class="num total">R$ 17,58</td>
+          </tr>
+          <tr>
+            <td class="sku">7</td>
+            <td><div class="name">Óleo de Soja 900ml</div><div class="sku">7891000100103 · UN</div></td>
+            <td class="num">1</td><td class="num">R$ 7,49</td><td class="num total">R$ 7,49</td>
+          </tr>
+          <tr>
+            <td class="sku">8</td>
+            <td><div class="name">Açúcar Refinado 1kg</div><div class="sku">7891910000197 · UN</div></td>
+            <td class="num">2</td><td class="num">R$ 4,99</td><td class="num total">R$ 9,98</td>
+          </tr>
+          <tr>
+            <td class="sku">9</td>
+            <td><div class="name">Sabonete Glicerinado 90g</div><div class="sku">7891024130207 · UN</div></td>
+            <td class="num">4</td><td class="num">R$ 2,19</td><td class="num total">R$ 8,76</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pane" style="border-left:1px solid var(--divider); background:var(--bg-surface);">
+    <div class="totals">
+      <div class="sumrow"><span>Itens</span><span>22</span></div>
+      <div class="sumrow"><span>Subtotal</span><span>R$ 166,82</span></div>
+      <div class="sumrow"><span>Desconto</span><span>R$ 6,82</span></div>
+    </div>
+
+    <div class="grand">
+      <div class="lp-caps">Total a pagar</div>
+      <div class="value">R$ 160,00</div>
+    </div>
+
+    <div class="pay">
+      <button class="lp-btn lp-btn--secondary">Dinheiro <span class="lp-mono" style="opacity:.6">F5</span></button>
+      <button class="lp-btn lp-btn--secondary">Débito</button>
+      <button class="lp-btn lp-btn--secondary">Crédito</button>
+      <button class="lp-btn lp-btn--secondary">PIX</button>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <button class="lp-btn lp-btn--primary finish">Finalizar venda <span class="lp-mono" style="opacity:.55">F12</span></button>
+    <button class="lp-btn lp-btn--ghost" style="height:36px">Cancelar venda</button>
+  </div>
+</div>
+
+<div class="fkeys">
+  <span><kbd>F2</kbd>Buscar</span>
+  <span><kbd>F3</kbd>Sangria</span>
+  <span><kbd>F4</kbd>Suprimento</span>
+  <span><kbd>F8</kbd>Cancelar item</span>
+  <span><kbd>F9</kbd>Fechar turno</span>
+  <span><kbd>F12</kbd>Finalizar</span>
+  <span style="margin-left:auto">Offline seguro · 3 vendas na fila de sincronização</span>
+</div>
+
+<div class="toast">
+  <div class="bar"></div>
+  <div><b style="font-weight:var(--fw-semibold)">Item 9 adicionado</b> · Sabonete Glicerinado 90g</div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'lp-theme';
+  var MOON = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/>';
+  var SUN  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  function render(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    var ic = document.getElementById('ti'), lb = document.getElementById('tl');
+    if (ic) ic.innerHTML = (t === 'dark') ? MOON : SUN;
+    if (lb) lb.textContent = (t === 'dark') ? 'Escuro' : 'Claro';
+    try { localStorage.setItem(KEY, t); } catch (e) {}
+  }
+  var saved = 'dark';
+  try { saved = localStorage.getItem(KEY) || 'dark'; } catch (e) {}
+  window.lpSetTheme = render;
+  render(saved);
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('tt').addEventListener('click', function () {
+      render(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  });
+})();
+</script>
+</body>
+</html>

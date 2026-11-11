@@ -1,0 +1,64 @@
+name: CI
+
+# Gate mínimo do projeto: build Release sem aviso e a suíte inteira verde.
+# O que este pipeline NÃO faz (ainda): publicar MSI, assinar binários, rodar a
+# varredura de segredos. Cada um desses tem sua tarefa em docs/08.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  build-e-testes:
+    name: build + testes (.NET 8, Windows)
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache do NuGet
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('Directory.Packages.props', '**/*.csproj') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: Restore
+        run: dotnet restore Landipay.sln --nologo
+
+      # -warnaserror: o projeto está em 0 avisos hoje; se voltar a ter, o gate trava
+      # antes de virar dívida silenciosa.
+      - name: Build (Release)
+        run: dotnet build Landipay.sln -c Release --no-restore --nologo -warnaserror
+
+      - name: Testes (Release)
+        run: >
+          dotnet test Landipay.sln -c Release --no-build --nologo
+          --logger "trx;LogFileName=resultados.trx"
+          --results-directory TestResults
+
+      - name: Publicar resultados dos testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultados-testes
+          path: TestResults
+          if-no-files-found: warn

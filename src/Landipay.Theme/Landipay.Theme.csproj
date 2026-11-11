@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Landipay.Theme</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Marca: vira recurso do assembly do tema, servido por pack URI para cliente e instalador -->
+    <Resource Include="Assets\*.png" />
+    <Resource Include="Assets\*.ico" />
+  </ItemGroup>
+
+</Project>

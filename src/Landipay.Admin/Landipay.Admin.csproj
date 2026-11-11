@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Landipay.Admin</RootNamespace>
+    <AssemblyName>Landipay.Admin</AssemblyName>
+    <ApplicationIcon>../Landipay.Theme/Assets/app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Landipay.Ui\Landipay.Ui.csproj" />
+    <ProjectReference Include="..\Landipay.Theme\Landipay.Theme.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Landipay.Domain</RootNamespace>
+  </PropertyGroup>
+</Project>

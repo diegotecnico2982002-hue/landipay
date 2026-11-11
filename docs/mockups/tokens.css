@@ -1,0 +1,241 @@
+/* ============================================================================
+   Landipay Design System — tokens.css  (v0.2.0)
+   Dois temas completos sobre as MESMAS chaves semânticas.
+   Escuro = padrão (identidade). Claro = opção, hierarquia de superfícies própria.
+   REGRA DURA: hex aparece só aqui. Componentes consomem var(--token).
+   ========================================================================== */
+
+/* ── 0. Neutros (não variam por tema) ───────────────────────────────────── */
+:root {
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+
+  --font-sans: "Inter", "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", ui-monospace, monospace;
+
+  --fs-display: 32px; --fs-h1: 24px; --fs-h2: 20px;
+  --fs-body: 14px;    --fs-sm: 13px; --fs-xs: 12px; --fs-mono: 12.5px;
+
+  --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700;
+
+  --lh-tight: 1.15; --lh-normal: 1.5; --lh-loose: 1.65;
+  --tracking-tight: -0.02em; --tracking-caps: 0.08em;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms; --dur-base: 180ms;
+}
+
+/* ── 1. TEMA ESCURO (padrão) ─────────────────────────────────────────────── */
+[data-theme="dark"] {
+  /* superfícies */
+  --bg-page: #0B0F0C;
+  --bg-surface: #0F2A1A;
+  --bg-surface-elevated: #111511;
+  --bg-inset: #111511;
+  --overlay: rgba(11, 15, 12, 0.72);
+
+  /* texto */
+  --text-primary: #F0FDF4;
+  --text-secondary: #4ADE80;
+  --text-muted: #16A34A;
+
+  /* ação */
+  --primary: #22C55E;
+  --primary-hover: #16A34A;
+  --primary-foreground: #0B0F0C;
+  --primary-on-surface: #4ADE80;
+  --accent-soft: color-mix(in srgb, #22C55E 14%, transparent);
+  --accent-soft-border: color-mix(in srgb, #22C55E 34%, transparent);
+
+  /* linhas */
+  --border: #0F2A1A;
+  --border-strong: #1E2B22;
+  --divider: color-mix(in srgb, #F0FDF4 9%, transparent); /* extensão: divisores internos */
+
+  /* estados */
+  --error: #F87171;
+  --success: #4ADE80;
+  --warning: #F59E0B;
+
+  /* foco */
+  --focus-ring: #4ADE80;
+
+  /* elevação */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 0 0 1px var(--accent-soft-border),
+                   0 8px 24px color-mix(in srgb, #22C55E 12%, transparent);
+
+  /* decoração */
+  --glow: radial-gradient(60% 60% at 50% 0%,
+          color-mix(in srgb, #22C55E 12%, transparent) 0%, transparent 70%);
+
+  color-scheme: dark;
+}
+
+/* ── 2. TEMA CLARO (opção) ───────────────────────────────────────────────── */
+[data-theme="light"] {
+  /* superfícies — hierarquia tipo Square POS: página cinza, cartão branco */
+  --bg-page: #F6F6F6;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-inset: #F6F6F6;
+  --overlay: rgba(13, 13, 13, 0.35);
+
+  /* texto */
+  --text-primary: #0D0D0D;
+  --text-secondary: #666666;
+  --text-muted: #6E6E6E;          /* 4.72:1 pagina / 5.10:1 cartao (corrigido de #8A8A8A) */
+
+  /* ação */
+  --primary: #22C55E;
+  --primary-hover: #16A34A;
+  --primary-foreground: #0D0D0D;   /* 8.53:1 sobre #22C55E (corrigido de #FFFFFF = 2.28:1) */
+  --primary-on-surface: #15803D;   /* 5.02:1 sobre cartão branco */
+  --accent-soft: color-mix(in srgb, #22C55E 12%, transparent);
+  --accent-soft-border: color-mix(in srgb, #16A34A 28%, transparent);
+
+  /* linhas */
+  --border: #E3E3E3;
+  --border-strong: #D4D4D4;
+  --divider: color-mix(in srgb, #0D0D0D 10%, transparent); /* extensão: divisores internos */
+
+  /* estados */
+  --error: #B91C1C;
+  --success: #15803D;
+  --warning: #B45309;
+
+  /* foco */
+  --focus-ring: #16A34A;           /* 3.05:1 — atende 1.4.11 (não-texto, 3:1) */
+
+  /* elevação — sombras curtas, cartão branco sobre cinza */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.12);
+  --shadow-accent: 0 0 0 1px var(--accent-soft-border),
+                   0 4px 14px rgba(0, 0, 0, 0.06);
+
+  /* decoração */
+  --glow: radial-gradient(60% 60% at 50% 0%,
+          color-mix(in srgb, #22C55E 8%, transparent) 0%, transparent 70%);
+
+  color-scheme: light;
+}
+
+/* ── 3. Base ─────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+}
+
+/* ── 4. Componentes-base (100% via tokens) ───────────────────────────────── */
+
+.lp-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--space-2);
+  height: 40px; padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font: var(--fw-semibold) var(--fs-body)/1 var(--font-sans);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.lp-btn:active { transform: translateY(1px); }
+.lp-btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.lp-btn--primary { background: var(--primary); color: var(--primary-foreground); }
+.lp-btn--primary:hover { background: var(--primary-hover); }
+
+.lp-btn--secondary {
+  background: transparent; color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.lp-btn--secondary:hover { border-color: var(--accent-soft-border); background: var(--accent-soft); }
+
+.lp-btn--ghost { background: transparent; color: var(--text-secondary); }
+.lp-btn--ghost:hover { color: var(--text-primary); background: var(--bg-inset); }
+
+.lp-input {
+  width: 100%; height: 44px; padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-inset); color: var(--text-primary);
+  font: var(--fw-regular) var(--fs-body)/1 var(--font-sans);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.lp-input::placeholder { color: var(--text-muted); }
+.lp-input:hover { border-color: var(--border); }
+.lp-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.lp-label {
+  display: block; margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm); font-weight: var(--fw-medium);
+}
+
+.lp-chip {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  height: 26px; padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-soft-border);
+  background: var(--accent-soft);
+  color: var(--primary-on-surface);
+  font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+}
+.lp-chip .dot { width: 6px; height: 6px; border-radius: var(--radius-pill); background: var(--success); }
+
+.lp-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.lp-mono { font-family: var(--font-mono); font-size: var(--fs-mono); }
+
+.lp-caps {
+  text-transform: uppercase; letter-spacing: var(--tracking-caps);
+  font-size: var(--fs-xs); color: var(--text-muted); font-weight: var(--fw-semibold);
+}
+
+/* ── 5. Alternador de tema ───────────────────────────────────────────────── */
+.lp-theme-toggle {
+  position: fixed; top: var(--space-3); right: var(--space-4); z-index: 99;
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  height: 32px; padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.lp-theme-toggle:hover { color: var(--text-primary); border-color: var(--primary); }
+.lp-theme-toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.lp-theme-toggle svg { width: 14px; height: 14px; }

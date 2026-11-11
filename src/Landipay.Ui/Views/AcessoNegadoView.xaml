@@ -1,0 +1,38 @@
+<UserControl x:Class="Landipay.Ui.Views.AcessoNegadoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Border Style="{StaticResource Lp.Card}" Width="520"
+                VerticalAlignment="Center" HorizontalAlignment="Center" Padding="32,28">
+            <StackPanel>
+                <Border Width="44" Height="44" CornerRadius="12" HorizontalAlignment="Left"
+                        Background="{DynamicResource Lp.Brush.AccentSoft}"
+                        BorderBrush="{DynamicResource Lp.Brush.Error}" BorderThickness="1">
+                    <TextBlock Text="!" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource Lp.Brush.Error}" />
+                </Border>
+
+                <TextBlock Text="Acesso negado" Style="{StaticResource Lp.H1}" Margin="0,16,0,8" />
+                <TextBlock Text="{Binding Mensagem}" Style="{StaticResource Lp.Body}" TextWrapping="Wrap"
+                           Foreground="{DynamicResource Lp.Brush.TextSecondary}" />
+
+                <TextBlock Text="{Binding Explicacao}" Style="{StaticResource Lp.Body}" TextWrapping="Wrap"
+                           Margin="0,12,0,0" Foreground="{DynamicResource Lp.Brush.TextMuted}" />
+
+                <Border Background="{DynamicResource Lp.Brush.Inset}" CornerRadius="8" Padding="12,10" Margin="0,18,0,0"
+                        BorderBrush="{DynamicResource Lp.Brush.Border}" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="PERMISSÃO EXIGIDA" Style="{StaticResource Lp.Caps}"
+                                   Foreground="{DynamicResource Lp.Brush.TextMuted}" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Codigo}" FontFamily="Consolas" FontSize="13" Margin="12,0,0,0"
+                                   Foreground="{DynamicResource Lp.Brush.PrimaryOnSurface}" />
+                    </StackPanel>
+                </Border>
+
+                <Button Content="Voltar" Style="{StaticResource Lp.Button.Secondary}" Height="42"
+                        Margin="0,22,0,0" Command="{Binding VoltarCommand}" HorizontalAlignment="Left" MinWidth="130" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

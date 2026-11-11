@@ -1,0 +1,263 @@
+Caminho (relativo a REFERENCIA),Tipo,Tamanho (bytes),SHA-256,Observação
+ACBr.Net.Core.dll,Biblioteca — Fiscal (ACBr/DFe),92672,0fb1fdfc11c27e046bd906ec36352224c6a7b4a73a4962ac730217fb2888f9de,Metadados/versão lidos; lógica não descompilada
+ACBr.Net.DFe.Core.dll,Biblioteca — Fiscal (ACBr/DFe),100864,b8926dd0beeb30f5e49faaeee3b3d51becc307047d78393e473f71b3fc3f4e89,Metadados/versão lidos; lógica não descompilada
+ACBr.Net.Sat.Extrato.FastReport.dll,Biblioteca — Fiscal (ACBr/DFe),108544,654ae9c0c2152627385713f2842ca0da069da8316aad53cecd13afd8606a1f26,Metadados/versão lidos; lógica não descompilada
+ACBr.Net.Sat.dll,Biblioteca — Fiscal (ACBr/DFe),217088,df2cdfe75f2ba4da2ab4fcef9f8cb73623853b814e026989cf4ee164e09c80e8,Metadados/versão lidos; lógica não descompilada
+ACBrFramework.Net.dll,Biblioteca — Fiscal (ACBr/DFe),16619520,95f75b66d334e69108a47d9ce8a46f297d7ba75fa9bbc044ee593179dbf669f6,Metadados/versão lidos; lógica não descompilada
+AutoMapper.dll,Biblioteca — Terceiros,273920,1c516dff3a11c8d6c5987484c78aa9700d44353efe45d850bfa1a8bd78b3d71f,Metadados/versão lidos; lógica não descompilada
+Azure.Core.dll,Biblioteca — Cloud,439880,f19cdb9cd9c730b835d6b471e56dbcfb10d04609d4c6734fb62c5404c2861e1d,Metadados/versão lidos; lógica não descompilada
+Azure.Storage.Blobs.dll,Biblioteca — Cloud,1366600,e7c9fe38b717837ba64d6c79485b15d76fd07d4295bf09a49d4d1505d02b044e,Metadados/versão lidos; lógica não descompilada
+Azure.Storage.Common.dll,Biblioteca — Cloud,247880,f906df9768363ffd8f7971491c91c5510708500814b70774f22b6b529450c218,Metadados/versão lidos; lógica não descompilada
+BCrypt-Net-Next.dll,Biblioteca — Terceiros,22528,f38d81052ffae5feb073e06e2f231ff3f010515d1ba2b4bbf9fac8b34eee0293,Metadados/versão lidos; lógica não descompilada
+BarcodeStandard.dll,Biblioteca — Terceiros,97280,9e71e4255147c309458d630644c28fc066a76165de99329aa451e66569a39f73,Metadados/versão lidos; lógica não descompilada
+CTe.Classes.dll,Biblioteca — Fiscal (ACBr/DFe),205312,1890e97cf139a438e2c06f8ab6d0a9e35f5df395eaed33c59a85e5a91173bdf1,Metadados/versão lidos; lógica não descompilada
+CTe.Dacte.Base.dll,Biblioteca — Fiscal (ACBr/DFe),5120,40b804dfa8e4d9181391dfa4e010d7480bcaa9c0120fa6dcdaf551ae9a9f83db,Metadados/versão lidos; lógica não descompilada
+CTe.Dacte.OpenFast.dll,Biblioteca — Fiscal (ACBr/DFe),7168,3c15449ff5cb88fe76332a76aa803661bdcb38ba981c779b7a8db1e238408342,Metadados/versão lidos; lógica não descompilada
+CTe.Servicos.dll,Biblioteca — Fiscal (ACBr/DFe),70144,afe875fedf2e977d503559342f7839b44ec7743fd4efefb67f172fa53b629a72,Metadados/versão lidos; lógica não descompilada
+CTe.Utils.dll,Biblioteca — Fiscal (ACBr/DFe),26624,2e4bee9613aabb1a27548f8fedc5ada63d47346b7bf8b821d8b412eaabf77d06,Metadados/versão lidos; lógica não descompilada
+CTe.Wsdl.dll,Biblioteca — Fiscal (ACBr/DFe),23040,3177b5eef610e6896333382ab6c28692ca67293374d9f7f98d1c7dfc4d8ed077,Metadados/versão lidos; lógica não descompilada
+ControlzEx.dll,Biblioteca — Terceiros,270912,d807a787ac319447d12e8fb2f511e26d5d3468bb386cc6aa47c54b9aabd4d20c,Metadados/versão lidos; lógica não descompilada
+CustomControls.dll,Biblioteca — Terceiros,27648,8200c5bc691b0ea54a604c3c574251cdb1b7df69fc3a9a02441e172e86051ea5,Metadados/versão lidos; lógica não descompilada
+DFe.Classes.dll,Biblioteca — Fiscal (ACBr/DFe),11264,146a24c8dca829ddd9ce68c7722e8bec5290f99d84b8324fb6f50089dfc49cfb,Metadados/versão lidos; lógica não descompilada
+DFe.Utils.dll,Biblioteca — Fiscal (ACBr/DFe),36864,4e54e6bca6849f4b3c8ceeced72f6b57767019d60025f0a31cb99c29050dcbb3,Metadados/versão lidos; lógica não descompilada
+DFe.Wsdl.dll,Biblioteca — Fiscal (ACBr/DFe),28160,1658293d2c13339084a30db58c34d9c4c34b0a97c065dcd31aeef5df442d9d15,Metadados/versão lidos; lógica não descompilada
+Dapper.Transaction.dll,Biblioteca — Acesso a dados,18944,314b3b572cc6b153dd2ecc41db62400a7c70906933619ea3b5d52f88fc51ecef,Metadados/versão lidos; lógica não descompilada
+Dapper.dll,Biblioteca — Acesso a dados,215552,5524bebf1cff3e49623731ed81e0dbb3052052e87fe60aa339ebc0ddf1333aea,Metadados/versão lidos; lógica não descompilada
+Domain.dll,Biblioteca — Terceiros,169472,d3f27525c1a9e24b9cd344966b628e15dd650541434ea9a991230b8146ef501d,Metadados/versão lidos; lógica não descompilada
+EnvDTE.dll,Biblioteca — Terceiros,255800,f60bc7bbb1f1bed4ba7822ca16237524ec1f24bcd58e854097c33fc13f01befe,Metadados/versão lidos; lógica não descompilada
+ExcelDataReader.DataSet.dll,Biblioteca — Terceiros,9728,a6c881538c1fa546c9c660fa26a2f7d67c3ee4155a9b166c31e7407edc6dbc72,Metadados/versão lidos; lógica não descompilada
+ExcelDataReader.dll,Biblioteca — Relatórios/planilha,161792,ea1bcc023ec8b3f076d38d14a708906d57562369391585f8a8c2818d9300b047,Metadados/versão lidos; lógica não descompilada
+FastReport.OpenSource.Export.PdfSimple.dll,Biblioteca — Relatórios/planilha,26624,85e0b7e08a913e1d7915de4f4c3793c01564bb25c2f37b6237f2a91c2b8127b4,Metadados/versão lidos; lógica não descompilada
+FastReport.dll,Biblioteca — Relatórios/planilha,3006464,adc1f858310e1d35caecce47d9fc4da70a8f923e45dc68edc6337f3cff2da406,Metadados/versão lidos; lógica não descompilada
+FileHelpers.dll,Biblioteca — Terceiros,208896,e0961e3a44c278a85e94b11f25358ccfc91e3e28989cc515cc0fdc5941491179,Metadados/versão lidos; lógica não descompilada
+FirebirdSql.Data.FirebirdClient.dll,Biblioteca — Acesso a dados,1235456,00d381e5bb93327d2dd2b3eb4f3fc8f3935f6601cbc71af38a026ea8220fe2b9,Metadados/versão lidos; lógica não descompilada
+FluentFTP.dll,Biblioteca — Terceiros,232960,a91177dd78c4f864ce10cbf1fb8aad63680f7965a6ef7204e4214eb322a34e27,Metadados/versão lidos; lógica não descompilada
+FluentValidation.dll,Biblioteca — Terceiros,426496,2d761d53d5e65cfec5e19153cc684a0dd61a7aff1baa860eaaca1051937542b3,Metadados/versão lidos; lógica não descompilada
+Gestor.exe,Binário,102007296,3ada206061c7f6521eb0177ecf04610aa66e000317183cdf0a1a0f57c5c8c59d,Executável do legado; NÃO executado (sem autorização)
+Gestor.exe.config,Configuração,11034,daa4801b62a19fda8e616ffc57159b6a7eac16b1b88356ceafcbf4a6d5870390,Lido (XML); foi a principal fonte de observação
+Gestor.exe.manifest,Configuração,189653,09c58110715dc63d0e83ed3011d8f2590186286dfe58751ac1ea7b22f39caaa5,Não lido em detalhe
+Gestor.zip,Pacote,129463329,2be92bbcc60b494e2054292a59faeb32faac43be471d4b13101234623df8d52d,"Pacote de distribuição; conteúdo listado, não extraído"
+ICSharpCode.AvalonEdit.dll,Biblioteca — Terceiros,621056,b0032716709359f7361d5a2ddc8e2ad457a1448a093fb4900e0336312b0a10c7,Metadados/versão lidos; lógica não descompilada
+ICSharpCode.SharpZipLib.dll,Biblioteca — Terceiros,188416,b4cba17e1123333356bf7e80a20e3adffd8ec335c14da1a249d1b10f3d7cfd0b,Metadados/versão lidos; lógica não descompilada
+Infra.CrossCutting.dll,Biblioteca — Terceiros,107520,7fafa2ffb33d35767c6719927117430f6c8121edb72b5a0ea277a05c37ac0a30,Metadados/versão lidos; lógica não descompilada
+MDFe.Classes.dll,Biblioteca — Fiscal (ACBr/DFe),97280,c7bd08e44bfe76f6d193c6154c248696ef0899ba427df6709ce9984caff59e05,Metadados/versão lidos; lógica não descompilada
+MDFe.Damdfe.Base.dll,Biblioteca — Fiscal (ACBr/DFe),5120,30bc8c8166dab474d271b2d23affddd52746c4e5ac0f53cefc09de8de1ace490,Metadados/versão lidos; lógica não descompilada
+MDFe.Damdfe.OpenFast.dll,Biblioteca — Fiscal (ACBr/DFe),6144,e835e37d8fb973a4599b787e39c4efa966b8094e5bc33efb0f7f50a3b1869866,Metadados/versão lidos; lógica não descompilada
+MDFe.Servicos.dll,Biblioteca — Fiscal (ACBr/DFe),25600,4e3698af8633794d61a2c625afbbcbe050795636314798db3c6ff2b70a2418f2,Metadados/versão lidos; lógica não descompilada
+MDFe.Utils.dll,Biblioteca — Fiscal (ACBr/DFe),8704,00277b238ebac5408c2fc602b717b443635002bcb3d2367da262e53bf9448416,Metadados/versão lidos; lógica não descompilada
+MDFe.Wsdl.dll,Biblioteca — Fiscal (ACBr/DFe),16896,a06a1398937a97470b4dc9766ad81e6239807146c2d0fb1d5ab67513b9a729b4,Metadados/versão lidos; lógica não descompilada
+MaterialDesignColors.dll,Biblioteca — Terceiros,302592,b5ec30c93b1d2b4631ee2b178750ec92e302e2e331090ec9783981b9572354f8,Metadados/versão lidos; lógica não descompilada
+MaterialDesignThemes.Wpf.dll,Biblioteca — Terceiros,9590272,344e2cee979e979932f504dc76bd75e97ae1ff46caa3fe2795adfe0a866347f7,Metadados/versão lidos; lógica não descompilada
+Microsoft.CSharp.dll,Biblioteca — Terceiros,47304,27f8c235487aca3b66586435436ceffde8347cb28398c0c83910b0a08ce32ec4,Metadados/versão lidos; lógica não descompilada
+Microsoft.Extensions.DependencyInjection.Abstractions.dll,Biblioteca — Terceiros,63784,19edd4f5e69a4589dc314909b5854a22f89c4b9ab040591771397b2cb1a17ba6,Metadados/versão lidos; lógica não descompilada
+Microsoft.Extensions.Logging.Abstractions.dll,Biblioteca — Terceiros,67856,b4e0e778afdc76403792390b056f68de0ced742d16c5b0347d9cca6930f4761b,Metadados/versão lidos; lógica não descompilada
+Microsoft.ReportViewer.Common.dll,Biblioteca — Relatórios/planilha,9034704,b000281c795ee40ed0b7767e3457661eedc9515d0406997902584bd2e4ae02ba,Metadados/versão lidos; lógica não descompilada
+Microsoft.ReportViewer.DataVisualization.dll,Biblioteca — Relatórios/planilha,5094864,bd08c3a06ac29d500f47253555a1b0ecaca6086b9035d1063144b5e11431d41c,Metadados/versão lidos; lógica não descompilada
+Microsoft.ReportViewer.Design.dll,Biblioteca — Relatórios/planilha,84384,f68ea0a0d290942ca7c2ac44c71abc4882340e368f43360bec81003f70016d1f,Metadados/versão lidos; lógica não descompilada
+Microsoft.ReportViewer.ProcessingObjectModel.dll,Biblioteca — Relatórios/planilha,98208,8256717e1296f8760bb529c711e22e586c8417ecb3df6cd14523048dbd9ffad0,Metadados/versão lidos; lógica não descompilada
+Microsoft.ReportViewer.WinForms.dll,Biblioteca — Relatórios/planilha,598432,6ef5bfc16ea7490e86ec718fc76f4d84fe65724778ebad0f5ab130f61e302587,Metadados/versão lidos; lógica não descompilada
+Microsoft.SqlServer.ConnectionInfo.dll,Biblioteca — Acesso a dados,171096,d8a81e198a721ad8baaab4e4f90103a8407965454ca4ff46c966e9b0d948526d,Metadados/versão lidos; lógica não descompilada
+Microsoft.SqlServer.Management.Sdk.Sfc.dll,Biblioteca — Acesso a dados,506968,28f0ce3aefd6ab09fae7f9bcfd8ae3a1748770eb25f5830291770c042e3a9721,Metadados/versão lidos; lógica não descompilada
+Microsoft.SqlServer.Smo.dll,Biblioteca — Acesso a dados,3615832,da94df6df6b07b0fa84923c0fea229b8fda2243b10506637d1abee066ba5a0db,Metadados/versão lidos; lógica não descompilada
+Microsoft.SqlServer.Types.dll,Biblioteca — Acesso a dados,392456,30108ff222575a0fec8dec65bc92d1b0773e1429abef918d969dffeb7b5bb2ca,Metadados/versão lidos; lógica não descompilada
+Microsoft.VisualBasic.dll,Biblioteca — Terceiros,146136,de1f2104853d0767b0a5a11f4c7381aed934a782ef30fb550260eeca1d3dc4e1,Metadados/versão lidos; lógica não descompilada
+Microsoft.Web.WebView2.Core.dll,Biblioteca — Terceiros,355768,5d503ddbbdf9ded95649d390e7e55e0c4abdad4630693010a165154142a933d3,Metadados/versão lidos; lógica não descompilada
+Microsoft.Web.WebView2.WinForms.dll,Biblioteca — Terceiros,35256,92417232cac31b155e5eea394af04dce85af542620731b461c947fb79bdc34ca,Metadados/versão lidos; lógica não descompilada
+Microsoft.Web.WebView2.Wpf.dll,Biblioteca — Terceiros,41400,24abedaa6ca6c670bd3b72cc0157131696d84f8bfc52e867e7e26fcd514fe7f8,Metadados/versão lidos; lógica não descompilada
+Microsoft.Win32.Primitives.dll,Biblioteca — Terceiros,21216,5eaa2e82a26b0b302280d08f54dc9da25165dd0e286be52440a271285d63f695,Metadados/versão lidos; lógica não descompilada
+Microsoft.Xaml.Behaviors.dll,Biblioteca — Terceiros,145288,b864da9d88414877cea9b1a016146265a5fb9d0e12f4dbb1dccc0cc998119a54,Metadados/versão lidos; lógica não descompilada
+MySql.Data.dll,Biblioteca — Acesso a dados,370176,54e8490f53d0debf30b11aedc383ece405ba8dad18f99433b963e9fe83d9786d,Metadados/versão lidos; lógica não descompilada
+NFe.Classes.dll,Biblioteca — Fiscal (ACBr/DFe),282112,aafe183b94bec18873fa2a5380ab1c7324690a3e8147f5cc7f8b4fb7edee2749,Metadados/versão lidos; lógica não descompilada
+NFe.Danfe.Base.dll,Biblioteca — Fiscal (ACBr/DFe),10240,321fef41c6476e41ee2f1e9710ef9c0e5a416c95a88cc75a5c3d70aa41f340cb,Metadados/versão lidos; lógica não descompilada
+NFe.Danfe.Nativo.dll,Biblioteca — Fiscal (ACBr/DFe),292352,c641b32f1ad512ad5f1959be0dc223f30bf6e14f33a9737d13bc3ac703a47262,Metadados/versão lidos; lógica não descompilada
+NFe.Danfe.OpenFast.dll,Biblioteca — Fiscal (ACBr/DFe),16896,d2f2881ca4517bb962ba300f4d9169a0f55ccf25ba99dc8e06a7f22a2663ff20,Metadados/versão lidos; lógica não descompilada
+NFe.Servicos.dll,Biblioteca — Fiscal (ACBr/DFe),61952,7d2cb6099164e136dbb7faca0d325b57344cb8c8a39b6c28d639a03735affcaa,Metadados/versão lidos; lógica não descompilada
+NFe.Utils.dll,Biblioteca — Fiscal (ACBr/DFe),216576,0079f81b37050b3f9020a3eeaf8274c2bc016988bceee0ba066ff205c95e73ff,Metadados/versão lidos; lógica não descompilada
+NFe.Wsdl.dll,Biblioteca — Fiscal (ACBr/DFe),41472,2210a2f8206e906b0b3f3098488e2a5519a85af93d1b29f13225bc7830cc56ca,Metadados/versão lidos; lógica não descompilada
+NFeRetrato.frx,Recurso,129626,7777ef0f7a4c46ae47c6015ae1dea3294ff9e7d6a39bb838059e51b8c66ab986,Relatório FastReport (binário)
+Newtonsoft.Json.dll,Biblioteca — Terceiros,711952,e1e27af7b07eeedf5ce71a9255f0422816a6fc5849a483c6714e1b472044fa9d,Metadados/versão lidos; lógica não descompilada
+Notifications.Wpf.dll,Biblioteca — Terceiros,25088,26bf458ea96d09e78d9ac1200d2156d9e620e0fec1bda2e7eac6b05c62eb2677,Metadados/versão lidos; lógica não descompilada
+OFXSharp.dll,Biblioteca — Terceiros,24064,c583ea22c5bb13d52d045e6a1702f3c3ca8b0f41c2836c5f238fe67da95d7ca1,Metadados/versão lidos; lógica não descompilada
+OpenHardwareMonitorLib.dll,Biblioteca — Terceiros,311808,f487a9793228eb72023e1aaff74f66734568836bbbbdcf73200c31aa0ede502d,Metadados/versão lidos; lógica não descompilada
+PDF-XChange Viewer Settings.dat,Desconhecido,11683,a9edd3c788a09edebbbeb5ea68bd03a1d54831b808063dc71f25d159fea7885c,Settings do PDF-XChange
+PDFtoPrinter.dll,Biblioteca — Terceiros,17408,66ad98c7d4680e18d1103d40edd59323e4b8099829575492e1ca327c16902d6b,Metadados/versão lidos; lógica não descompilada
+PDFtoPrinter_m.exe,Binário,11691288,5cf9f8b94a395f9cba3658502e40b014d67026a16da2aa91a3f7bb64931ae8e2,Executável do legado; NÃO executado (sem autorização)
+PdfSharpCore.dll,Biblioteca — Terceiros,523264,7d13f8ddbba9e98156d6c5228594240771b90c60d330390f6d7df664edfdcb93,Metadados/versão lidos; lógica não descompilada
+PreVenda.exe,Binário,165302272,862d1c2e86a4ff4be5e6165035215e5174f61e058c0b6a6190c759e440e37309,Executável do legado; NÃO executado (sem autorização)
+PresentationCore.dll,Biblioteca — BCL / WPF / WinForms,1326280,3db572eba533167ddd0cd97a513b9af9f3dacc278fb2ba0e8652d83ff6ac00a5,Metadados/versão lidos; lógica não descompilada
+PresentationFramework.Aero2.dll,Biblioteca — Terceiros,164592,24969fab0f11e96f6d98f8873314c0379ac8e9261cda7bf012afbe4b04395089,Metadados/versão lidos; lógica não descompilada
+PresentationFramework.dll,Biblioteca — BCL / WPF / WinForms,2078936,87bffcab9f113b5e4a5d9a906cf114c32de2a223d30ea6be252ec71d07f8b78c,Metadados/versão lidos; lógica não descompilada
+QRCoder.Xaml.dll,Biblioteca — Terceiros,7680,921db8064332ffe825c11755b34c3e6d0e24d84e4bff300428a6b4e4b39cfd5a,Metadados/versão lidos; lógica não descompilada
+QRCoder.dll,Biblioteca — Terceiros,144384,561acfe4b1a14c837b189fb9fc5c6d3e82440184bbde61912de723d62d6368b3,Metadados/versão lidos; lógica não descompilada
+RestSharp.dll,Biblioteca — Terceiros,190464,37bf2a8815e1833153ff92d0bec3a1405f5c5f146884d0563a96bacd1b0074f9,Metadados/versão lidos; lógica não descompilada
+Rh.DateRange.Picker.dll,Biblioteca — Terceiros,40448,57b98e11d089bc2e4244cbd98f89f4c1a46ba3f26bfdeaeb8f0582d81742723c,Metadados/versão lidos; lógica não descompilada
+Service.dll,Biblioteca — Terceiros,124928,a72215ae49bb982092455d763ad87613a68b2145dc08371423848ac316c9dda3,Metadados/versão lidos; lógica não descompilada
+Simple.ImageResizer.dll,Biblioteca — Terceiros,9728,c412fd8c8f6da19a59f096d5fc668741eea79a23fc983e44d753137536982921,Metadados/versão lidos; lógica não descompilada
+SixLabors.Fonts.dll,Biblioteca — Terceiros,371200,4c26256e83c73fc8367cc1e8e75fa456f84e0e0d22051f1af87f796829a58395,Metadados/versão lidos; lógica não descompilada
+SixLabors.ImageSharp.dll,Biblioteca — Terceiros,1211392,ed95d901ded037f3da1e3b178835cbfda6fb1c715616fef9f7fcb330f62e7fc2,Metadados/versão lidos; lógica não descompilada
+Syncfusion.Compression.Base.dll,Biblioteca — Relatórios/planilha,262144,2136aa9bd97247294fb8f6eb0218c283e9ab080e2ffb48cf4087896c7c3d3d0c,Metadados/versão lidos; lógica não descompilada
+Syncfusion.Data.WPF.dll,Biblioteca — Relatórios/planilha,285696,9d1979add253060746e9be30f4ac6974a807cb24fb93f611def9ea1a5e9587f1,Metadados/versão lidos; lógica não descompilada
+Syncfusion.Licensing.dll,Biblioteca — Relatórios/planilha,819200,20356f49ac8e1afd3e8f262f4f9a4bcd2acc64a99ee917b9018c01d6391e958e,Metadados/versão lidos; lógica não descompilada
+Syncfusion.Pdf.Base.dll,Biblioteca — Relatórios/planilha,7361536,30c876813f94e8194c293f1bcfef79402d293354f9337ed0a80259387266debb,Metadados/versão lidos; lógica não descompilada
+Syncfusion.PdfViewer.WPF.dll,Biblioteca — Relatórios/planilha,16377856,cc65a885575a7bcdc0068aaf8037cbdf7279227774ea85286af2a9c1bea81e44,Metadados/versão lidos; lógica não descompilada
+Syncfusion.SfGrid.WPF.dll,Biblioteca — Relatórios/planilha,2549760,a1c24604a8f1f79f768624a7a25a4dfc66e5b005eeed1d96f57b34a731845b93,Metadados/versão lidos; lógica não descompilada
+Syncfusion.SfGridConverter.WPF.dll,Biblioteca — Relatórios/planilha,116736,1c262d65b8709f9d68824c883433b0f6aabb53c33bcd00dd37c5074b8ed81b50,Metadados/versão lidos; lógica não descompilada
+Syncfusion.SfInput.WPF.dll,Biblioteca — Relatórios/planilha,593408,687690b455e493d563b584743e412160116d31cc48537a218c86c4e97da392a3,Metadados/versão lidos; lógica não descompilada
+Syncfusion.Shared.WPF.Classic.dll,Biblioteca — Relatórios/planilha,10654208,86889b657442d3d60f7d5edc1900f5a6d78bb9f9e34461eb9f6fe3111675f29e,Metadados/versão lidos; lógica não descompilada
+Syncfusion.Shared.WPF.dll,Biblioteca — Relatórios/planilha,3021824,e7100f266d1dc21cad0613aa48f848cbbdbe2e340c78fbdc82fed6a2c1f30540,Metadados/versão lidos; lógica não descompilada
+Syncfusion.XlsIO.Base.dll,Biblioteca — Relatórios/planilha,6242304,fae86a279a235d31d5a666d4f90bbcc9a7abe43ebfaa91655422599d9db22d2d,Metadados/versão lidos; lógica não descompilada
+Syntax.Boleto.dll,Biblioteca — Syntax (produto),186368,34b6403d9bb71b572e95d66cdf5d74481c0f687630d3d7718a24fca473c0baa3,Metadados/versão lidos; lógica não descompilada
+Syntax.Controler.dll,Biblioteca — Syntax (produto),23631360,6aa52122ca985c0e86436e46e139960f52d0220cd8e66c70be012b56f58f3a70,Metadados/versão lidos; lógica não descompilada
+Syntax.Controler.dll.config,Configuração,6211,0fdab2e519cd0a83d7a144ca6b2949219c88f219b8634142ed7e4470a0f2768e,Lido (XML); foi a principal fonte de observação
+Syntax.DocsFiscais.dll,Biblioteca — Syntax (produto),20515328,97e8c9086cf39ef790a51991ddddc4eba0b9cf843d02b349ef592e9f9f7f540d,Metadados/versão lidos; lógica não descompilada
+Syntax.DocsFiscais.dll.config,Configuração,2284,7405a3b2b323819943880cfa3d1ceb8a179ae874dd5b569810e39256ae13c4ea,Lido (XML); foi a principal fonte de observação
+Syntax.Framework.dll,Biblioteca — Syntax (produto),505856,397cd0e901c5798b55bb2595453f86c473f5e7e88f7e5d4ad9486cce9b1127d7,Metadados/versão lidos; lógica não descompilada
+Syntax.Framework.dll.config,Configuração,1488,5e6703f1e5d99a9a29039347ff25c10e5b9ee72f9d929d1a745b4ebe72f3d086,Lido (XML); foi a principal fonte de observação
+Syntax.HelpDesk.dll,Biblioteca — Syntax (produto),171008,9391f2d2d61f860e8f502cc61589d2260c47edbf5d29627db33af50da960b058,Metadados/versão lidos; lógica não descompilada
+Syntax.Model.dll,Biblioteca — Syntax (produto),1660416,8c3fb3552bdabf0819c6ae2fe4e2e8fded490460155725ec871579abd4149668,Metadados/versão lidos; lógica não descompilada
+Syntax.Model.dll.config,Configuração,1246,b60ec958233ed77071c64d7ab5d0d9734d261df761b1a1bea950574d17f90484,Lido (XML); foi a principal fonte de observação
+Syntax.SPED.dll,Biblioteca — Syntax (produto),203776,4bf3ac0af024dd9dfd45fe17e9db7cb1290a5ddf31c4818d6dc3ccf718bfe163,Metadados/versão lidos; lógica não descompilada
+Syntax.SPED.dll.config,Configuração,1246,ec5d6c38dfb79c20d40f63d46ee9402ba7612061937f94b99e59b3c05b4ca9b9,Lido (XML); foi a principal fonte de observação
+SyntaxAlert.dll,Biblioteca — Terceiros,23552,5f5016d713867d0964ec55b84ec44b0beac7aa8bb34e2a6a9e96d135ca0c0fea,Metadados/versão lidos; lógica não descompilada
+System.AppContext.dll,Biblioteca — BCL / WPF / WinForms,21176,9dc115ac4aadd6a94d87c7a8a3f61803cc25a3d73501d7534867df6b0d8a0d39,Metadados/versão lidos; lógica não descompilada
+System.Buffers.dll,Biblioteca — BCL / WPF / WinForms,23816,2d78d770c9cb997199154ae8c018b9f1d1efbc86729f7264dde6dbad2a12cac3,Metadados/versão lidos; lógica não descompilada
+System.ClientModel.dll,Biblioteca — BCL / WPF / WinForms,234016,44a8747f8e24a1f23d9a45d3f6345c48291dfb32948bcddb625d1e07a38aca3d,Metadados/versão lidos; lógica não descompilada
+System.Collections.Concurrent.dll,Biblioteca — BCL / WPF / WinForms,21224,cc62f3b867d50083c2932061f20662c698d2e1a741c4d2f9df1fd2d435e3ef3c,Metadados/versão lidos; lógica não descompilada
+System.Collections.NonGeneric.dll,Biblioteca — BCL / WPF / WinForms,21224,529943c0cdf24f57e94bf03fac5f40b94a638625027a02df79e1e8cb5d9bc696,Metadados/versão lidos; lógica não descompilada
+System.Collections.Specialized.dll,Biblioteca — BCL / WPF / WinForms,21224,938da38561da54793944e95e94b6e11cf83aacd667487297d428fbce1c06dc9c,Metadados/versão lidos; lógica não descompilada
+System.Collections.dll,Biblioteca — BCL / WPF / WinForms,21696,c2250e9e51b44d8ab8c5b892592766925f6580ee00b95026621d0afb037c2707,Metadados/versão lidos; lógica não descompilada
+System.ComponentModel.EventBasedAsync.dll,Biblioteca — BCL / WPF / WinForms,21768,22108e32e0b6e42f5f52a4cb17b9b6fa3dfd547ecd9eef9c67226dbec54d23e5,Metadados/versão lidos; lógica não descompilada
+System.ComponentModel.Primitives.dll,Biblioteca — BCL / WPF / WinForms,21752,bfcd867f71c887429dfe008d7ec5d1853d15b3932d4ce8991694293477b5be37,Metadados/versão lidos; lógica não descompilada
+System.ComponentModel.TypeConverter.dll,Biblioteca — BCL / WPF / WinForms,22784,0dbb92ecd5dfa7fc258bc6deed4cecf1b37f895457fd06976496926abdb317bb,Metadados/versão lidos; lógica não descompilada
+System.ComponentModel.dll,Biblioteca — BCL / WPF / WinForms,21192,5e61d755616cb10524f5f31e9b70c65a7fff8e30e25ce711ac8b354d657ab479,Metadados/versão lidos; lógica não descompilada
+System.Configuration.dll,Biblioteca — BCL / WPF / WinForms,94936,2a649e4685476734d982daa301dc791677b1301ec3e648ca2fa159ef344b604f,Metadados/versão lidos; lógica não descompilada
+System.Console.dll,Biblioteca — BCL / WPF / WinForms,21160,b537313413f80105f143cc144feeae2ac93f44747727de309a71d57d2650034a,Metadados/versão lidos; lógica não descompilada
+System.Data.Common.dll,Biblioteca — BCL / WPF / WinForms,154448,1c7bff6f16bb618648e699b723aeafe511515cd6aad699c25faae2a507e22811,Metadados/versão lidos; lógica não descompilada
+System.Data.DataSetExtensions.dll,Biblioteca — BCL / WPF / WinForms,27384,7442c39432505e20eebf015a2ab0a5b308cafde1f4bef71f2dc9b6f983e7e451,Metadados/versão lidos; lógica não descompilada
+System.Data.dll,Biblioteca — BCL / WPF / WinForms,1245872,39deb49d05b4d4a6f114070912f57cb2ab195035a770ff16de04b8e931dcc82a,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.Contracts.dll,Biblioteca — BCL / WPF / WinForms,21736,9c4ae61e0e8365762efe3d34c5595029f2c12e0079e6070720e2cef0882c84e5,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.Debug.dll,Biblioteca — BCL / WPF / WinForms,21208,55a30d92d163cf1807bea6dc13b4c13e70aebbb034dc77eaef4f4394730dcd8e,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.DiagnosticSource.dll,Biblioteca — BCL / WPF / WinForms,189104,1887592615fc08bbc91ad62307c8c11dfc14c45bf120d271d66be4a0d1a149a7,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.FileVersionInfo.dll,Biblioteca — BCL / WPF / WinForms,21248,7c25a74772e135257235640a0264ddc05235e14f3627896cfe735e9955155f83,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.Process.dll,Biblioteca — BCL / WPF / WinForms,21728,28b165cddb82a2507114394ae398995ef8a50c549214f8678aa66054f6927754,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.StackTrace.dll,Biblioteca — BCL / WPF / WinForms,23936,cae99f910874288afbf810968d13b79d755cd4b2006609ec036ea4934181cba5,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.TextWriterTraceListener.dll,Biblioteca — BCL / WPF / WinForms,21280,63eab38ee9f4dcd686c8e6a4f01e1e2a9bb91e52b20ab4dde0c28061e9261860,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.Tools.dll,Biblioteca — BCL / WPF / WinForms,21208,260c6250ef9b57dca99b4cecc533f9a34857b5a32b5351202f776163841200aa,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.TraceSource.dll,Biblioteca — BCL / WPF / WinForms,21744,c81a57d0634c462a6cf49844059e9b170f650ccdf0789519ffd4ae7d28e2718d,Metadados/versão lidos; lógica não descompilada
+System.Diagnostics.Tracing.dll,Biblioteca — BCL / WPF / WinForms,31608,b84b93be455cc7d14ec0c88ce08dafac7b6aac2e549c969e7126eb48c31f8b1c,Metadados/versão lidos; lógica não descompilada
+System.Drawing.Common.dll,Biblioteca — BCL / WPF / WinForms,53360,ca18383a2070518ae8c3e96cbd1705da283c8ada4ddf396217d2bcb7dcd03103,Metadados/versão lidos; lógica não descompilada
+System.Drawing.Primitives.dll,Biblioteca — BCL / WPF / WinForms,21208,2805a18724a24034ad6acb315dac516e479cecc5f3753204052657e560932d5d,Metadados/versão lidos; lógica não descompilada
+System.Drawing.dll,Biblioteca — BCL / WPF / WinForms,189632,cd9f5d416f75654e5de23297910cb40ddc92e87ec8670b97776b0dbcd1087b0b,Metadados/versão lidos; lógica não descompilada
+System.Dynamic.Runtime.dll,Biblioteca — BCL / WPF / WinForms,22224,f600acc811720183c639cebe5618baf9c8135b85b9cbdc0758bc9b2dcc6dd7a9,Metadados/versão lidos; lógica não descompilada
+System.Globalization.Calendars.dll,Biblioteca — BCL / WPF / WinForms,21744,b56ffb65b842daae13f3020b0b04646db92f89801d2a2f89087d145a996d43f7,Metadados/versão lidos; lógica não descompilada
+System.Globalization.Extensions.dll,Biblioteca — BCL / WPF / WinForms,25992,c7e91bd148ed22ee1ff8ebd3e58b199a30af90aa37499bcf8da34409672f2ed9,Metadados/versão lidos; lógica não descompilada
+System.Globalization.dll,Biblioteca — BCL / WPF / WinForms,21192,56bd0c02c734abf4d7fd1ef2e8b6a9e4bf5e4bab4e606cd1023d63b02852fa61,Metadados/versão lidos; lógica não descompilada
+System.IO.Compression.FileSystem.dll,Biblioteca — BCL / WPF / WinForms,23816,d48fb3e4f2a1812c53f34a12d9093a79408cf1be5db5036879696848661a32e8,Metadados/versão lidos; lógica não descompilada
+System.IO.Compression.ZipFile.dll,Biblioteca — BCL / WPF / WinForms,21224,7720ee13405ea8a3c204703a181e67dc6d66835e9df263c09d04d8b48b41eb26,Metadados/versão lidos; lógica não descompilada
+System.IO.Compression.dll,Biblioteca — BCL / WPF / WinForms,110944,da18d61bb6b7d35c56cb4f392fae0844cca73f72a043a08994beccb531ff3b77,Metadados/versão lidos; lógica não descompilada
+System.IO.FileSystem.DriveInfo.dll,Biblioteca — BCL / WPF / WinForms,21232,984575c44cab17d46587af6cc8c22c409b79bec280fd771e6af93a0a0c20e5b0,Metadados/versão lidos; lógica não descompilada
+System.IO.FileSystem.Primitives.dll,Biblioteca — BCL / WPF / WinForms,21232,5c84dd40d67c0e59906511d2b09da8e28c454b5979eb5fde74213f9d4bdbc564,Metadados/versão lidos; lógica não descompilada
+System.IO.FileSystem.Watcher.dll,Biblioteca — BCL / WPF / WinForms,21224,c9e2562f1a1b86acdb6957cf916aced9c4f8b71ebb16dfa0050252146205ad37,Metadados/versão lidos; lógica não descompilada
+System.IO.FileSystem.dll,Biblioteca — BCL / WPF / WinForms,21192,9a4595dbb128e2d8f373b3ac45478e7131f4d181b50ec821ec8cb88bd46bd5b8,Metadados/versão lidos; lógica não descompilada
+System.IO.Hashing.dll,Biblioteca — BCL / WPF / WinForms,52488,529413a06fe9200cc87b59e928087a7d6ac2da5204b94bf06fff5300ab34a71d,Metadados/versão lidos; lógica não descompilada
+System.IO.IsolatedStorage.dll,Biblioteca — BCL / WPF / WinForms,21208,0e80a2e256d16e487bc847d1857ed7cd088f176254ba2a385d675338b836b0fc,Metadados/versão lidos; lógica não descompilada
+System.IO.MemoryMappedFiles.dll,Biblioteca — BCL / WPF / WinForms,21216,81b6527ac2d18782ac24ae463c11dd1d70ab1bc89f626b7347a592229b371a1d,Metadados/versão lidos; lógica não descompilada
+System.IO.Pipes.dll,Biblioteca — BCL / WPF / WinForms,21168,80a229b2917fc3a5d941ff9745a6be0065028afdf9509300410d2721c71f1198,Metadados/versão lidos; lógica não descompilada
+System.IO.UnmanagedMemoryStream.dll,Biblioteca — BCL / WPF / WinForms,21232,86f1f12e47f260985b08bb966598123578eb5e48bef9bb086f04e16e9d53bb32,Metadados/versão lidos; lógica não descompilada
+System.IO.dll,Biblioteca — BCL / WPF / WinForms,21144,c191a43029edd4eb8eee003356f1fe79aa45071c25433a7a3589590e9089eed9,Metadados/versão lidos; lógica não descompilada
+System.Linq.Expressions.dll,Biblioteca — BCL / WPF / WinForms,22224,bf97f67165231c2a42b95f11d80337b082e2b2be54351da44c8a10c06194b369,Metadados/versão lidos; lógica não descompilada
+System.Linq.Parallel.dll,Biblioteca — BCL / WPF / WinForms,21192,30a49d16436e3a05569c99a0c2d21755c2fa323c5b925f9f21c10287cc97d9c9,Metadados/versão lidos; lógica não descompilada
+System.Linq.Queryable.dll,Biblioteca — BCL / WPF / WinForms,21192,719ac73bb261e0a13574f5a198126ccf40352264958defb555280d005134c704,Metadados/versão lidos; lógica não descompilada
+System.Linq.dll,Biblioteca — BCL / WPF / WinForms,21152,349c7fbe9ae2b78c2f90239bddfcea5b16a0faac1fe83553a816c50c3e9089b1,Metadados/versão lidos; lógica não descompilada
+System.Memory.Data.dll,Biblioteca — BCL / WPF / WinForms,35080,55ab72436f63e6fce8c9b7836fc535b50c165fc103e34517804365522c9629a3,Metadados/versão lidos; lógica não descompilada
+System.Memory.dll,Biblioteca — BCL / WPF / WinForms,145200,d5e8e4866f9cfa66f7765660f84b210198893e55335487afe5ebda342c0e913d,Metadados/versão lidos; lógica não descompilada
+System.Net.Http.Formatting.dll,Biblioteca — BCL / WPF / WinForms,168616,f68a93afa714066c8d93d6b0e896a3027e1c4091827505626d5669512581849b,Metadados/versão lidos; lógica não descompilada
+System.Net.Http.dll,Biblioteca — BCL / WPF / WinForms,198472,b5d20736f84f335ef4c918a5ba41c3a0d7189397c71b166ccc6c342427a94ece,Metadados/versão lidos; lógica não descompilada
+System.Net.NameResolution.dll,Biblioteca — BCL / WPF / WinForms,21208,222bd77c5692c2961e8c3638f6511d6f7cbeb9e0977e2d5c3bca6739a5311f37,Metadados/versão lidos; lógica não descompilada
+System.Net.NetworkInformation.dll,Biblioteca — BCL / WPF / WinForms,22248,2e2d28a0802d8c8c08c0d422f48733ad8bf1dfae75f5682a4a3df8898e7e819f,Metadados/versão lidos; lógica não descompilada
+System.Net.Ping.dll,Biblioteca — BCL / WPF / WinForms,21168,4d97e8481b9a27042bb903245625735d82ff627c66797de619303c1e705d0d6a,Metadados/versão lidos; lógica não descompilada
+System.Net.Primitives.dll,Biblioteca — BCL / WPF / WinForms,22216,9a8ba725f8e953c933285065228a9409036f9137d03016b127ccea8a19452466,Metadados/versão lidos; lógica não descompilada
+System.Net.Requests.dll,Biblioteca — BCL / WPF / WinForms,21184,f2e74a3ec2dc753c9a48fa9a677775f949eb1e02fc1bb8bf38c39e8d2ab147eb,Metadados/versão lidos; lógica não descompilada
+System.Net.Security.dll,Biblioteca — BCL / WPF / WinForms,21696,d0d90152136a0acf340fb345098f2e5c718bb13f3b5a809d7be4d9948b8574d4,Metadados/versão lidos; lógica não descompilada
+System.Net.Sockets.dll,Biblioteca — BCL / WPF / WinForms,30544,694f4c61b6bae0aefac07a1e861c12c03cb6002f30091e4c8b05bb9c8ccf0d3d,Metadados/versão lidos; lógica não descompilada
+System.Net.WebHeaderCollection.dll,Biblioteca — BCL / WPF / WinForms,21232,69b48ff8e6f40b84cdddb95bcdbb34e1184a2e29cb4ccc0fc9f1a2493648ee37,Metadados/versão lidos; lógica não descompilada
+System.Net.WebSockets.Client.dll,Biblioteca — BCL / WPF / WinForms,21224,19766a20b62b038abc3e863f2d6e7b55fabee4d9cbcad3eb1d7bd3ebfe8d023a,Metadados/versão lidos; lógica não descompilada
+System.Net.WebSockets.dll,Biblioteca — BCL / WPF / WinForms,21192,99920ce34a01a0c07efd86d6e134bb401993515d001b7567a4116ad222993a63,Metadados/versão lidos; lógica não descompilada
+System.Numerics.Vectors.dll,Biblioteca — BCL / WPF / WinForms,110344,20c2fa81b8c70d651099d762954f285fd4f942e63b2d7217c145dab8d4b2f4c9,Metadados/versão lidos; lógica não descompilada
+System.ObjectModel.dll,Biblioteca — BCL / WPF / WinForms,21696,870ee1141cb61abfce44507e39bfdd734f2335e34d89ecfffb13838195a6b936,Metadados/versão lidos; lógica não descompilada
+System.Reflection.Extensions.dll,Biblioteca — BCL / WPF / WinForms,21224,3d2551d6458b84566025fddfe5dad479cab5785428efd6814860d36ad1811c9a,Metadados/versão lidos; lógica não descompilada
+System.Reflection.Primitives.dll,Biblioteca — BCL / WPF / WinForms,21736,0383dc02fdf0b5d4612d8caaad13d594cac1609c8240b73dfd6ea5803f5e17ea,Metadados/versão lidos; lógica não descompilada
+System.Reflection.dll,Biblioteca — BCL / WPF / WinForms,22200,63aaf632ee7f3bc852c4d71c742cf1d26f18f784f6c89113e056b2599ba8f514,Metadados/versão lidos; lógica não descompilada
+System.Resources.Reader.dll,Biblioteca — BCL / WPF / WinForms,21200,e3036362506d96c9c00ed6393a2afcacd9f2e71cd2a35c1d638a61e85d2fb040,Metadados/versão lidos; lógica não descompilada
+System.Resources.ResourceManager.dll,Biblioteca — BCL / WPF / WinForms,21232,62dce4679e33c079e11f41b096bc803b30b1d963a1ea79efa84187cebbc06afe,Metadados/versão lidos; lógica não descompilada
+System.Resources.Writer.dll,Biblioteca — BCL / WPF / WinForms,21200,daaabd07f1b94be19d72913360286e469f454886850afcc603506eaab03150e4,Metadados/versão lidos; lógica não descompilada
+System.Runtime.CompilerServices.Unsafe.dll,Biblioteca — BCL / WPF / WinForms,19256,08cbd7278b66f1e68425a82d4b97181a4130d93e3dd91831407aba7212ccdacf,Metadados/versão lidos; lógica não descompilada
+System.Runtime.CompilerServices.VisualC.dll,Biblioteca — BCL / WPF / WinForms,21784,18a610b8bad43cf784cde4d4902a238f2281c2a677daae790cab55f6da915979,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Extensions.dll,Biblioteca — BCL / WPF / WinForms,21720,f9feb277f86241f55425182a26decf50a210675d4f040ec542af3fb3dd287de6,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Handles.dll,Biblioteca — BCL / WPF / WinForms,21200,7a81d2a001b543b2a55c9affc845a5df7edab1fd308c6979bbd982b1b826b57c,Metadados/versão lidos; lógica não descompilada
+System.Runtime.InteropServices.RuntimeInformation.dll,Biblioteca — BCL / WPF / WinForms,28624,8bb9d52ba5c67f05c8f632deb1e7e98a909318b10e1388b47e919515fdd42cbf,Metadados/versão lidos; lógica não descompilada
+System.Runtime.InteropServices.dll,Biblioteca — BCL / WPF / WinForms,24296,383a1f9dac655c6805c24d4a03bc5fbeb9abd1536de5510f5756259eefcb4871,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Numerics.dll,Biblioteca — BCL / WPF / WinForms,21200,16e7efd6c19b2e3e516ae1bc7b3175d0e22f1ad357701f229e353da348eee182,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Serialization.Formatters.dll,Biblioteca — BCL / WPF / WinForms,21264,c343f7bf08a4c97a90ba607a492c721533333173fa63f65f6e5de9ceee65fc16,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Serialization.Json.dll,Biblioteca — BCL / WPF / WinForms,21240,e8d531f0aaa674f794b7f43ec76e4e32ad93f3c136020cf4b6e3433832f9c0df,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Serialization.Primitives.dll,Biblioteca — BCL / WPF / WinForms,27048,575e26a455892f1fd77b730e6928f70b760e76094afe5bcb677d854daf869ac5,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Serialization.Xml.dll,Biblioteca — BCL / WPF / WinForms,24816,557858e44a51a74646ad07a85cba56af1da13ad26ac2f74ee5d8c3e8a171c221,Metadados/versão lidos; lógica não descompilada
+System.Runtime.Serialization.dll,Biblioteca — BCL / WPF / WinForms,424696,33b87adc5462d44b370fbcbd10541051b67d9bca24494ed1afcd491ecf7e540e,Metadados/versão lidos; lógica não descompilada
+System.Runtime.dll,Biblioteca — BCL / WPF / WinForms,29360,50ad612d4cf6113de26b2870da099c4817f59e64a2da98f05803b4a2e2304919,Metadados/versão lidos; lógica não descompilada
+System.Security.Claims.dll,Biblioteca — BCL / WPF / WinForms,21200,8270d1248950ee8aee5c2ac2e321df07e65c7a94004ae03c857deacd231a5542,Metadados/versão lidos; lógica não descompilada
+System.Security.Cryptography.Algorithms.dll,Biblioteca — BCL / WPF / WinForms,47016,967dddbfe7f1ceb933b5875d65c59cdb835bb063f287a361e8b35dd814a9b14d,Metadados/versão lidos; lógica não descompilada
+System.Security.Cryptography.Csp.dll,Biblioteca — BCL / WPF / WinForms,21240,566775f5502c3c1fa70acade145293df5d02c1a9f031820d429605e9b4584b44,Metadados/versão lidos; lógica não descompilada
+System.Security.Cryptography.Encoding.dll,Biblioteca — BCL / WPF / WinForms,21256,1f5c1abe1b2720680170388569354d8cda9d558b53aff7caf175ce0f7e3733e5,Metadados/versão lidos; lógica não descompilada
+System.Security.Cryptography.Primitives.dll,Biblioteca — BCL / WPF / WinForms,21784,b755d0b55a465d07c9dd3fc11822487d1e649b684aef91a4ce9b935b416a01b9,Metadados/versão lidos; lógica não descompilada
+System.Security.Cryptography.X509Certificates.dll,Biblioteca — BCL / WPF / WinForms,22832,3c8630acb43c12a6a317227ff2922056ecd991fe945464fdf7ea81f1293a479f,Metadados/versão lidos; lógica não descompilada
+System.Security.Principal.dll,Biblioteca — BCL / WPF / WinForms,21208,02416bc542be82002b8b81adbbbcdcc8d098104020d09b571dc674b5bc19a177,Metadados/versão lidos; lógica não descompilada
+System.Security.SecureString.dll,Biblioteca — BCL / WPF / WinForms,22392,18032d190d0d599823e59c8dd8b588909bef8888b8bf304723a138b61f1b911f,Metadados/versão lidos; lógica não descompilada
+System.Security.dll,Biblioteca — BCL / WPF / WinForms,73408,783a94bd0c31f39bebfb77500eac950f67a7ced226a3bfceb664c7144742121a,Metadados/versão lidos; lógica não descompilada
+System.ServiceProcess.dll,Biblioteca — BCL / WPF / WinForms,60120,40b113e44646aa987c742de8b9b2d3c018097b4999955458f6f098151d2e4bfc,Metadados/versão lidos; lógica não descompilada
+System.Text.Encoding.CodePages.dll,Biblioteca — BCL / WPF / WinForms,761488,a750dd0f58327ac94487c92475eabb99487a46407256e2fa8593852b4eebcef8,Metadados/versão lidos; lógica não descompilada
+System.Text.Encoding.Extensions.dll,Biblioteca — BCL / WPF / WinForms,21232,cbe29672cd2b6a0ea97b55f3844fbede3e591996f39c3aa1f829f2fa50551fa9,Metadados/versão lidos; lógica não descompilada
+System.Text.Encoding.dll,Biblioteca — BCL / WPF / WinForms,21696,0ab1f7f87b7c2afca57d394e4f4e262c82ba3209cb0a750cd66401fb33f21eca,Metadados/versão lidos; lógica não descompilada
+System.Text.Encodings.Web.dll,Biblioteca — BCL / WPF / WinForms,79024,e9c4f5eed186cb129c527c4b8d67d163ea2f2396e9d8b96e30b5e7c12203ce84,Metadados/versão lidos; lógica não descompilada
+System.Text.Json.dll,Biblioteca — BCL / WPF / WinForms,644904,0cf5a9763c98f09e94dfcdaa4437e9508eabe2e50b408ba421d5faf734c5556a,Metadados/versão lidos; lógica não descompilada
+System.Text.RegularExpressions.dll,Biblioteca — BCL / WPF / WinForms,21232,c98a52bd017df01aea7b955e6f219537d391a62c2c2b976684da282f9cd7cacf,Metadados/versão lidos; lógica não descompilada
+System.Threading.Overlapped.dll,Biblioteca — BCL / WPF / WinForms,37752,f17ff442b77a6cfe9c118d2f8fae1ab6c814a0d4f35c5844996be84f3fcc8592,Metadados/versão lidos; lógica não descompilada
+System.Threading.Tasks.Extensions.dll,Biblioteca — BCL / WPF / WinForms,27944,692c324c02a922f890aaf5948c54ec9758f5ab7019b8e8ab169c106ddd3231f4,Metadados/versão lidos; lógica não descompilada
+System.Threading.Tasks.Parallel.dll,Biblioteca — BCL / WPF / WinForms,21232,3468e0c875db94a8f45d56ab76bbcc677b942ca51a23649ba3c5ad1b20e391f1,Metadados/versão lidos; lógica não descompilada
+System.Threading.Tasks.dll,Biblioteca — BCL / WPF / WinForms,22224,0110616dfe870b8bcf25df8f6ce38ef5aac39e728ddaa3420ea199f5a7e80a16,Metadados/versão lidos; lógica não descompilada
+System.Threading.Thread.dll,Biblioteca — BCL / WPF / WinForms,21200,9d4faea9892d4ecfabf61986687fc6cb30f5f51a6b62819b9571ff58e04c4dd5,Metadados/versão lidos; lógica não descompilada
+System.Threading.ThreadPool.dll,Biblioteca — BCL / WPF / WinForms,21216,3d9ebc81b1bd3234666c8ce403a5f17a726867c68ffa5de4ec8ee92599335658,Metadados/versão lidos; lógica não descompilada
+System.Threading.Timer.dll,Biblioteca — BCL / WPF / WinForms,21200,04b9235f64c9c846f8a767230714895da87c7ae2cd0105e9d14835ae46f0fed8,Metadados/versão lidos; lógica não descompilada
+System.Threading.dll,Biblioteca — BCL / WPF / WinForms,22192,4dc8d588ec63641c28422d648e8de5e2c030eb7afec2071a99dd3bd9a204557f,Metadados/versão lidos; lógica não descompilada
+System.ValueTuple.dll,Biblioteca — BCL / WPF / WinForms,78992,e4774aead2793f440e0ced6c097048423d118e0b6ed238c6fe5b456acb07817f,Metadados/versão lidos; lógica não descompilada
+System.Web.Services.dll,Biblioteca — BCL / WPF / WinForms,160976,d7c7934eb9311f5f504667c9e3bbc1da36f6ddeb4a669e8ec080e898623b6152,Metadados/versão lidos; lógica não descompilada
+System.Web.dll,Biblioteca — BCL / WPF / WinForms,2683568,999cc4d1396105064a0bf16de16c541b8ae8b41fc309b291ccd983f12ba4745e,Metadados/versão lidos; lógica não descompilada
+System.Windows.Controls.DataVisualization.Toolkit.dll,Biblioteca — BCL / WPF / WinForms,256352,862acc50a8ed16781c3be98336cd8e49c7778859fd6006f68d1c823f8be425db,Metadados/versão lidos; lógica não descompilada
+System.Windows.Forms.dll,Biblioteca — BCL / WPF / WinForms,1552088,13ccc0d87ddad786180ef7bc59fc65cb87c27533981deb5f12eb2beb768ad37b,Metadados/versão lidos; lógica não descompilada
+System.Xaml.dll,Biblioteca — BCL / WPF / WinForms,110256,f3aa76faca52d5d81015a7f4228422e7c3602a4729d324aed9bd2e74abd8c583,Metadados/versão lidos; lógica não descompilada
+System.Xml.Linq.dll,Biblioteca — BCL / WPF / WinForms,45760,8055ef8374ac7904126706883594acee5c11d461011e3e43af09331506dbdd1d,Metadados/versão lidos; lógica não descompilada
+System.Xml.ReaderWriter.dll,Biblioteca — BCL / WPF / WinForms,21712,5f560e1dd529bb2529d7052e04008449f58d0439c2bb43437d7b5d39f84f949f,Metadados/versão lidos; lógica não descompilada
+System.Xml.XDocument.dll,Biblioteca — BCL / WPF / WinForms,21696,4f6a14e4ba2a2b26b8b8433d5f82f75a96af5a4f036d9447373b07271493917b,Metadados/versão lidos; lógica não descompilada
+System.Xml.XPath.XDocument.dll,Biblioteca — BCL / WPF / WinForms,22904,b33d08149a756a401628d11bfddfeeaca1f03c0578395bb061dae44f8a12ce5d,Metadados/versão lidos; lógica não descompilada
+System.Xml.XPath.dll,Biblioteca — BCL / WPF / WinForms,21176,24daa1faee0478ba58febe8ee789eb88be0a14d350b57ad8b10690c55976b2e1,Metadados/versão lidos; lógica não descompilada
+System.Xml.XmlDocument.dll,Biblioteca — BCL / WPF / WinForms,21712,8957f0bcea6ab8a011a53ae62466505199f11a228f87f3809931d974f87078ce,Metadados/versão lidos; lógica não descompilada
+System.Xml.XmlSerializer.dll,Biblioteca — BCL / WPF / WinForms,21712,21493f7f615a099e795f7fae7ecce6082414d1d427790bdf4b103623a3ab34eb,Metadados/versão lidos; lógica não descompilada
+System.Xml.dll,Biblioteca — BCL / WPF / WinForms,924336,d7e15690b3a3e31a81fd72832bc2f9355d9e2a42babb227ba69b5110cabe8802,Metadados/versão lidos; lógica não descompilada
+System.dll,Biblioteca — BCL / WPF / WinForms,1460888,b76822f9c08aff597120e3167b3e0fbda836d6bc6f14bc4bc2eeffab5b2c6125,Metadados/versão lidos; lógica não descompilada
+UIAutomationProvider.dll,Biblioteca — Terceiros,31440,2a1978e8ea12fdee9e3cdc18e59225bd35418e01e806e784907545ef6699d315,Metadados/versão lidos; lógica não descompilada
+UIAutomationTypes.dll,Biblioteca — Terceiros,39624,11c1458653eb70fe634c8985e24322e01d66205eb2410ad7350a0eac9db4aa60,Metadados/versão lidos; lógica não descompilada
+WPFToolkit.dll,Biblioteca — Terceiros,467288,aef9fcbb874fc82e151e32279330061f8f22a77c05f583a0cb5e5696654ac456,Metadados/versão lidos; lógica não descompilada
+WebView2Loader.dll,Biblioteca — Terceiros,116200,cc2f661aac9c05646933f717e629a69be93d8d06803066289d6dc1105aac6cd2,Metadados/versão lidos; lógica não descompilada
+WindowsBase.dll,Biblioteca — BCL / WPF / WinForms,658608,ae106f035c51bf105b332f2a14e611d09af236dfffb72e0bd165a3580e03bf49,Metadados/versão lidos; lógica não descompilada
+WindowsFormsIntegration.dll,Biblioteca — Terceiros,36064,10d49cd473e25c244787fb434fe449cb74e71448749190a4b471e86ae66b3995,Metadados/versão lidos; lógica não descompilada
+WpfAnimatedGif.dll,Biblioteca — Terceiros,40448,7cb24e379471f562a50e2025e1fde3daa7e92e7c6b30662f88af9360a05f10e5,Metadados/versão lidos; lógica não descompilada
+Xceed.Words.NET.dll,Biblioteca — Terceiros,297984,d152612bfffdf131d1e067336a2794aed1dd3afcc99723189f3a80179aa87a98,Metadados/versão lidos; lógica não descompilada
+Xceed.Wpf.DataGrid.dll,Biblioteca — Terceiros,2266112,905423cee6a35ca4230231d508b1fb2a337ec1eccfbb791b568645954ab22c99,Metadados/versão lidos; lógica não descompilada
+Xceed.Wpf.Toolkit.dll,Biblioteca — Terceiros,1005568,2c166d78c728d8fd8afc4c207205b6cd9554cce329d2debf0aa3eab574492fdf,Metadados/versão lidos; lógica não descompilada
+ZXing.Windows.Compatibility.dll,Biblioteca — Terceiros,19456,16840873d357786866c2bf1da58002913160a41f854328ab4e7e4910ef4e7b8f,Metadados/versão lidos; lógica não descompilada
+c39hrp24dhtt.ttf,Recurso,12212,a6502747557de72b282b0501367f98d6aff61532d1316dcb5b34b68f8c86a8a9,Fonte embutida
+netstandard.dll,Biblioteca — BCL / WPF / WinForms,98616,8be4a2270f8b2bea40f33f79869fdcca34e07bb764e63b81ded49d90d2b720dd,Metadados/versão lidos; lógica não descompilada
+schemas_cte.zip,Pacote,287898,d155db10588c1376abcb991f20b117e66f8e396dd1a5112eb96105bc40e44a74,"Pacote de distribuição; conteúdo listado, não extraído"
+schemas_mdfe.zip,Pacote,92899,8eadcf82f8a1b44c7bae8557cd4425b68b8768aaa40a7e863f637eaa7b3f6d41,"Pacote de distribuição; conteúdo listado, não extraído"
+schemas_nfe.zip,Pacote,264593,ff331996323381083ded0f4b2742fdb730d43f9d7f272c223314aa0ad53f59bd,"Pacote de distribuição; conteúdo listado, não extraído"
+stdole.dll,Biblioteca — Terceiros,16384,d6cdf961c6d2712fe1958815e51a30960d79fff1e97788b7741627dba972e8f7,Metadados/versão lidos; lógica não descompilada
+zxing.dll,Biblioteca — Terceiros,521728,d22c2a3e69bc3ad6e91293d88ec152df66f8ec72826454f52bef8b0d09fcbf4a,Metadados/versão lidos; lógica não descompilada

@@ -1,0 +1,64 @@
+<UserControl x:Class="Landipay.Ui.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!-- Marca completa (símbolo + wordmark + assinatura) sobre o formulário -->
+            <Image Source="{DynamicResource Lp.Logo.Completa}" Width="400"
+                   HorizontalAlignment="Center" Margin="0,0,0,20" />
+
+            <Border Style="{StaticResource Lp.Card}" Width="440">
+                <StackPanel>
+                <TextBlock Text="{Binding Titulo}" Style="{StaticResource Lp.H1}" />
+                <TextBlock Style="{StaticResource Lp.Body}" Margin="0,8,0,22"
+                           Text="Autenticação do operador com bloqueio progressivo e expiração de sessão." />
+
+                <!-- Login normal -->
+                <StackPanel Visibility="{Binding PrimeiroAcesso, Converter={StaticResource InversoVis}}">
+                    <TextBlock Text="Operador" Style="{StaticResource Lp.Label}" />
+                    <TextBox Style="{StaticResource Lp.TextBox}" FontFamily="Consolas"
+                             Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Text="Senha" Style="{StaticResource Lp.Label}" Margin="0,16,0,6" />
+                    <PasswordBox x:Name="SenhaBox" Style="{StaticResource Lp.PasswordBox}"
+                                 PasswordChanged="Senha_OnPasswordChanged" />
+
+                    <Button Content="Entrar" Style="{StaticResource Lp.Button.Primary}"
+                            Height="44" Margin="0,24,0,0" Command="{Binding EntrarCommand}" />
+                </StackPanel>
+
+                <!-- Primeiro acesso: cria o administrador, sem senha padrão -->
+                <StackPanel Visibility="{Binding PrimeiroAcesso, Converter={StaticResource BoolVis}}">
+                    <TextBlock Text="Login do administrador" Style="{StaticResource Lp.Label}" />
+                    <TextBox Style="{StaticResource Lp.TextBox}" FontFamily="Consolas"
+                             Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Text="Senha (mínimo 10 caracteres)" Style="{StaticResource Lp.Label}" Margin="0,16,0,6" />
+                    <PasswordBox x:Name="SenhaNovaBox" Style="{StaticResource Lp.PasswordBox}"
+                                 PasswordChanged="SenhaNova_OnPasswordChanged" />
+
+                    <TextBlock Text="Confirmar senha" Style="{StaticResource Lp.Label}" Margin="0,16,0,6" />
+                    <PasswordBox x:Name="ConfirmacaoBox" Style="{StaticResource Lp.PasswordBox}"
+                                 PasswordChanged="Confirmacao_OnPasswordChanged" />
+
+                    <Button Content="Criar administrador" Style="{StaticResource Lp.Button.Primary}"
+                            Height="44" Margin="0,24,0,0" Command="{Binding CriarAdministradorCommand}" />
+                </StackPanel>
+
+                <TextBlock Text="{Binding Mensagem}" Margin="0,18,0,0" FontSize="12" TextWrapping="Wrap">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="{DynamicResource Lp.Brush.TextSecondary}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding MensagemDeErro}" Value="True">
+                                    <Setter Property="Foreground" Value="{DynamicResource Lp.Brush.Error}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

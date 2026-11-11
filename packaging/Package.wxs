@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Empacotamento MSI (WiX v5).
+
+  Escopo perUser de propósito, igual ao produto: instala em %LOCALAPPDATA%\Landipay,
+  atalhos em HKCU, e NÃO pede administrador. Um MSI perMachine exigiria elevação só
+  para copiar arquivos — exatamente o que o instalador legado fazia sem necessidade.
+
+  O MSI entrega os binários; o provisionamento (banco, empresa, licença, admin)
+  continua sendo trabalho do Landipay.Installer.exe, que o atalho do menu abre.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <Package Name="Landipay PDV"
+           Manufacturer="Landipay"
+           Version="1.1.0"
+           UpgradeCode="6F2C1C93-3B7E-4C0E-9A61-2E0D5B7A8C41"
+           Scope="perUser"
+           Compressed="yes"
+           Language="1046">
+
+    <SummaryInformation Description="Landipay PDV — ponto de venda"
+                        Manufacturer="Landipay" />
+
+    <MajorUpgrade DowngradeErrorMessage="Já existe uma versão mais nova do Landipay instalada." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <!--
+      perUser + %LOCALAPPDATA% + -arch x64: instala sem administrador, que é o desenho do
+      produto (dados e binários por usuário). Um pacote por-máquina (Program Files) exigiria
+      elevação e falha com erro 1925 em sessão não elevada — testado.
+      -arch x64 é obrigatório: sem ele o pacote sai 32 bits e o registro em "Aplicativos
+      instalados" cai em WOW6432Node (verificado no log e no registro).
+    -->
+
+    <!-- Destinos -->
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="INSTALLFOLDER" Name="Landipay">
+        <Directory Id="DirInstalador" Name="Instalador" />
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="Landipay" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder" />
+
+    <!-- Binários do cliente (raiz da pasta de instalação) -->
+    <ComponentGroup Id="BinariosCliente" Directory="INSTALLFOLDER">
+      <!-- PDB não é empacotado: o script build-msi.ps1 remove os .pdb do payload antes daqui -->
+      <Files Include="payload\app\**" />
+    </ComponentGroup>
+
+    <!-- Binários do instalador/provisionador, em subpasta própria -->
+    <ComponentGroup Id="BinariosInstalador" Directory="DirInstalador">
+      <Files Include="payload\installer\**" />
+    </ComponentGroup>
+
+    <!-- Atalhos: um por aplicativo. Admin e Caixa são executáveis distintos: quem abre o
+         Caixa não tem Catálogo nem Relatórios na barra, e vice-versa. -->
+    <Component Id="AtalhosMenuIniciar" Directory="ApplicationProgramsFolder" Guid="*">
+      <Shortcut Id="AtalhoMenuAdmin"
+                Name="Landipay Admin"
+                Description="Gestão: cadastros, relatórios, usuários, configurações"
+                Target="[INSTALLFOLDER]Landipay.Admin.exe"
+                WorkingDirectory="INSTALLFOLDER" Icon="IconeApp" />
+      <Shortcut Id="AtalhoMenuPos"
+                Name="Landipay Caixa"
+                Description="Frente de caixa: venda, pagamento, sangria, turno"
+                Target="[INSTALLFOLDER]Landipay.Pos.exe"
+                WorkingDirectory="INSTALLFOLDER" Icon="IconeApp" />
+      <Shortcut Id="AtalhoMenuInstalador"
+                Name="Landipay — Instalador"
+                Description="Provisionar banco, empresa, licença e administrador"
+                Target="[INSTALLFOLDER]Instalador\Landipay.Installer.exe"
+                WorkingDirectory="INSTALLFOLDER" Icon="IconeApp" />
+      <RemoveFolder Id="RemoverPastaMenu" On="uninstall" />
+      <RegistryValue Root="HKCU" Key="Software\Landipay" Name="AtalhosMenuIniciar"
+                     Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Component Id="AtalhoAreaDeTrabalho" Directory="DesktopFolder" Guid="*">
+      <Shortcut Id="AtalhoDesktopAdmin"
+                Name="Landipay Admin"
+                Description="Gestão do Landipay"
+                Target="[INSTALLFOLDER]Landipay.Admin.exe"
+                WorkingDirectory="INSTALLFOLDER" Icon="IconeApp" />
+      <Shortcut Id="AtalhoDesktopPos"
+                Name="Landipay Caixa"
+                Description="Frente de caixa do Landipay"
+                Target="[INSTALLFOLDER]Landipay.Pos.exe"
+                WorkingDirectory="INSTALLFOLDER" Icon="IconeApp" />
+      <RegistryValue Root="HKCU" Key="Software\Landipay" Name="AtalhoAreaDeTrabalho"
+                     Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <Feature Id="Principal" Title="Landipay PDV" Level="1" AllowAbsent="no">
+      <ComponentGroupRef Id="BinariosCliente" />
+      <ComponentGroupRef Id="BinariosInstalador" />
+      <ComponentRef Id="AtalhosMenuIniciar" />
+      <ComponentRef Id="AtalhoAreaDeTrabalho" />
+    </Feature>
+
+    <!-- Interface: assistente com escolha de pasta -->
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+    <WixVariable Id="WixUILicenseRtf" Value="licenca.rtf" />
+
+    <!-- Ícone: usado no ARP, nos atalhos e no painel de desinstalação -->
+    <Icon Id="IconeApp" SourceFile="payload\app\app.ico" />
+    <Property Id="ARPPRODUCTICON" Value="IconeApp" />
+
+    <Property Id="ARPURLINFOABOUT" Value="https://landipay.local" />
+    <Property Id="ARPNOREPAIR" Value="1" />
+
+    <!--
+      Todos os usuários + instalação por usuário: sem estes dois, o WiX 5 ignora o
+      Scope="perUser" do Package e registra o produto em HKLM (per-machine), deixando
+      binários em %LOCALAPPDATA% e a entrada de "Aplicativos instalados" em HKLM — estado
+      inconsistente e que exige elevação para desinstalar. Verificado no registro.
+    -->
+    <Property Id="ALLUSERS" Value="2" />
+    <Property Id="MSIINSTALLPERUSER" Value="1" />
+  </Package>
+</Wix>

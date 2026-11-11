@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Theme.Dark.xaml — tokens do tema escuro (padrão).
+  As MESMAS chaves existem em Theme.Light.xaml. Componentes só usam DynamicResource
+  com estas chaves: trocar o dicionário troca o tema, sem reiniciar e sem cor literal
+  em nenhum outro arquivo (regra verificável por grep no CI).
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Superfícies -->
+  <SolidColorBrush x:Key="Lp.Brush.Page" Color="#0B0F0C" />
+  <SolidColorBrush x:Key="Lp.Brush.Surface" Color="#0F2A1A" />
+  <SolidColorBrush x:Key="Lp.Brush.SurfaceElevated" Color="#111511" />
+  <SolidColorBrush x:Key="Lp.Brush.Inset" Color="#111511" />
+
+  <!-- Texto -->
+  <SolidColorBrush x:Key="Lp.Brush.TextPrimary" Color="#F0FDF4" />
+  <SolidColorBrush x:Key="Lp.Brush.TextSecondary" Color="#4ADE80" />
+  <SolidColorBrush x:Key="Lp.Brush.TextMuted" Color="#16A34A" />
+
+  <!-- Ação -->
+  <SolidColorBrush x:Key="Lp.Brush.Primary" Color="#22C55E" />
+  <SolidColorBrush x:Key="Lp.Brush.PrimaryHover" Color="#16A34A" />
+  <SolidColorBrush x:Key="Lp.Brush.PrimaryForeground" Color="#0B0F0C" />
+  <SolidColorBrush x:Key="Lp.Brush.PrimaryOnSurface" Color="#4ADE80" />
+  <SolidColorBrush x:Key="Lp.Brush.AccentSoft" Color="#22C55E" Opacity="0.14" />
+  <SolidColorBrush x:Key="Lp.Brush.AccentSoftBorder" Color="#22C55E" Opacity="0.34" />
+
+  <!-- Linhas -->
+  <SolidColorBrush x:Key="Lp.Brush.Border" Color="#0F2A1A" />
+  <SolidColorBrush x:Key="Lp.Brush.BorderStrong" Color="#1E2B22" />
+  <SolidColorBrush x:Key="Lp.Brush.Divider" Color="#F0FDF4" Opacity="0.09" />
+
+  <!-- Estados -->
+  <SolidColorBrush x:Key="Lp.Brush.Error" Color="#F87171" />
+  <SolidColorBrush x:Key="Lp.Brush.Success" Color="#4ADE80" />
+  <SolidColorBrush x:Key="Lp.Brush.Warning" Color="#F59E0B" />
+  <SolidColorBrush x:Key="Lp.Brush.FocusRing" Color="#4ADE80" />
+
+  <!-- Marca: variante escura (wordmark claro) para não sumir no fundo do produto.
+       Trocar de tema troca a arte, sem código: as duas chaves existem nos dois dicionários. -->
+  <BitmapImage x:Key="Lp.Logo.Horizontal"
+               UriSource="pack://application:,,,/Landipay.Theme;component/Assets/logo-horizontal-escuro.png" />
+  <BitmapImage x:Key="Lp.Logo.Completa"
+               UriSource="pack://application:,,,/Landipay.Theme;component/Assets/logo-completa-escuro.png" />
+  <BitmapImage x:Key="Lp.Logo.Icone"
+               UriSource="pack://application:,,,/Landipay.Theme;component/Assets/icone-256.png" />
+
+</ResourceDictionary>

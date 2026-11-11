@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Theme.Light.xaml — tokens do tema claro (opção).
+  Mesmas chaves do Theme.Dark.xaml. Hierarquia de superfícies: página cinza,
+  cartão branco, bordas #E3E3E3. Verde de texto usa #15803D (AA), não #22C55E.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Superfícies -->
+  <SolidColorBrush x:Key="Lp.Brush.Page" Color="#F6F6F6" />
+  <SolidColorBrush x:Key="Lp.Brush.Surface" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="Lp.Brush.SurfaceElevated" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="Lp.Brush.Inset" Color="#F6F6F6" />
+
+  <!-- Texto -->
+  <SolidColorBrush x:Key="Lp.Brush.TextPrimary" Color="#0D0D0D" />
+  <SolidColorBrush x:Key="Lp.Brush.TextSecondary" Color="#666666" />
+  <SolidColorBrush x:Key="Lp.Brush.TextMuted" Color="#6E6E6E" />
+
+  <!-- Ação -->
+  <SolidColorBrush x:Key="Lp.Brush.Primary" Color="#22C55E" />
+  <SolidColorBrush x:Key="Lp.Brush.PrimaryHover" Color="#16A34A" />
+  <SolidColorBrush x:Key="Lp.Brush.PrimaryForeground" Color="#0D0D0D" />
+  <SolidColorBrush x:Key="Lp.Brush.PrimaryOnSurface" Color="#15803D" />
+  <SolidColorBrush x:Key="Lp.Brush.AccentSoft" Color="#22C55E" Opacity="0.12" />
+  <SolidColorBrush x:Key="Lp.Brush.AccentSoftBorder" Color="#16A34A" Opacity="0.28" />
+
+  <!-- Linhas -->
+  <SolidColorBrush x:Key="Lp.Brush.Border" Color="#E3E3E3" />
+  <SolidColorBrush x:Key="Lp.Brush.BorderStrong" Color="#D4D4D4" />
+  <SolidColorBrush x:Key="Lp.Brush.Divider" Color="#0D0D0D" Opacity="0.10" />
+
+  <!-- Estados -->
+  <SolidColorBrush x:Key="Lp.Brush.Error" Color="#B91C1C" />
+  <SolidColorBrush x:Key="Lp.Brush.Success" Color="#15803D" />
+  <SolidColorBrush x:Key="Lp.Brush.Warning" Color="#B45309" />
+  <SolidColorBrush x:Key="Lp.Brush.FocusRing" Color="#16A34A" />
+
+  <!-- Marca: variante clara (wordmark verde-escuro original #0F3524) para fundo claro. -->
+  <BitmapImage x:Key="Lp.Logo.Horizontal"
+               UriSource="pack://application:,,,/Landipay.Theme;component/Assets/logo-horizontal-claro.png" />
+  <BitmapImage x:Key="Lp.Logo.Completa"
+               UriSource="pack://application:,,,/Landipay.Theme;component/Assets/logo-completa-claro.png" />
+  <BitmapImage x:Key="Lp.Logo.Icone"
+               UriSource="pack://application:,,,/Landipay.Theme;component/Assets/icone-256.png" />
+
+
+</ResourceDictionary>

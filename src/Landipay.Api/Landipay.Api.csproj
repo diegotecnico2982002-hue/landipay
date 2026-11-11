@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <RootNamespace>Landipay.Api</RootNamespace>
+    <UserSecretsId>landipay-api-dev</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Landipay.Backend\Landipay.Backend.csproj" />
+    <ProjectReference Include="..\Landipay.Updates\Landipay.Updates.csproj" />
+  </ItemGroup>
+</Project>

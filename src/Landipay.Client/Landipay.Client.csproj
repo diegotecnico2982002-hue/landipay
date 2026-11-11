@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Landipay.Client</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Konscious.Security.Cryptography.Argon2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Landipay.Infrastructure\Landipay.Infrastructure.csproj" />
+    <ProjectReference Include="..\Landipay.Updates\Landipay.Updates.csproj" />
+  </ItemGroup>
+</Project>

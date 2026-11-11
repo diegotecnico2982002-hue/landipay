@@ -1,0 +1,24 @@
+# Normaliza fim de linha: repositório guarda LF, working tree Windows usa CRLF.
+* text=auto
+
+*.cs       text eol=crlf
+*.xaml     text eol=crlf
+*.csproj   text eol=crlf
+*.props    text eol=crlf
+*.sln      text eol=crlf
+*.ps1      text eol=crlf
+*.md       text eol=crlf
+*.json     text eol=crlf
+*.yml      text eol=crlf
+*.wxs      text eol=crlf
+
+# Binários — nunca converter
+*.png      binary
+*.ico      binary
+*.jpg      binary
+*.msi      binary
+*.dll      binary
+*.exe      binary
+*.ttf      binary
+*.rtf      binary
+*.db       binary

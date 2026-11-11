@@ -1,0 +1,45 @@
+<Window x:Class="Landipay.Admin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Landipay Admin" Height="760" Width="1200"
+        MinHeight="620" MinWidth="1000"
+        Icon="{DynamicResource Lp.Logo.Icone}"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource Lp.Brush.Page}"
+        FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{DynamicResource Lp.Brush.Surface}"
+                BorderBrush="{DynamicResource Lp.Brush.Divider}" BorderThickness="0,0,0,1">
+            <Grid Margin="20,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Source="{DynamicResource Lp.Logo.Horizontal}" Height="22" VerticalAlignment="Center" />
+                    <Border Background="{DynamicResource Lp.Brush.AccentSoft}" CornerRadius="6" Padding="8,3" Margin="14,0,0,0"
+                            BorderBrush="{DynamicResource Lp.Brush.AccentSoftBorder}" BorderThickness="1"
+                            VerticalAlignment="Center">
+                        <TextBlock Text="ADMIN" Style="{StaticResource Lp.Caps}"
+                                   Foreground="{DynamicResource Lp.Brush.PrimaryOnSurface}" />
+                    </Border>
+                    <TextBlock Margin="14,0,0,0" VerticalAlignment="Center" FontSize="12"
+                               Foreground="{DynamicResource Lp.Brush.TextSecondary}" Text="{Binding Contexto}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,16,0" FontSize="12"
+                               Foreground="{DynamicResource Lp.Brush.TextSecondary}" Text="{Binding Operador}" />
+                    <Button Content="Início" Style="{StaticResource Lp.Button.Ghost}" Click="Inicio_Click" Margin="0,0,8,0" />
+                    <Button Content="Catálogo" Style="{StaticResource Lp.Button.Ghost}" Click="Catalogo_Click" Margin="0,0,8,0" />
+                    <Button Content="Relatórios" Style="{StaticResource Lp.Button.Ghost}" Click="Relatorios_Click" Margin="0,0,8,0" />
+                    <Button Content="Tema" Style="{StaticResource Lp.Button.Ghost}" Click="Tema_Click" Margin="0,0,8,0" />
+                    <Button Content="Sair" Style="{StaticResource Lp.Button.Secondary}" Click="Sair_Click" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ContentControl Grid.Row="1" Content="{Binding Atual}" Margin="0" />
+    </Grid>
+</Window>

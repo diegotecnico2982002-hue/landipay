@@ -1,0 +1,38 @@
+# Build
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+.vs/
+
+# Banco local de desenvolvimento (recriável com: dotnet ef database update)
+*.db
+*.db-shm
+*.db-wal
+
+# Segredos — NUNCA versionar (A2)
+.env
+secrets.json
+*.pfx
+*.snk
+
+# Sistema
+Thumbs.db
+desktop.ini
+
+# Chaves de assinatura locais (KMS em produção)
+chaves/
+
+# Empacotamento — regenerado por packaging/build-msi.ps1
+dist/
+packaging/payload/
+*.wixpdb
+*.msi
+
+# Resultados de teste e logs
+TestResults/
+*.trx
+*.log
+
+# Perfil de dados local do app (LANDIPAY_DADOS)
+AppData/
