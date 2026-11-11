@@ -4,7 +4,7 @@ PDV desktop para lojas de varejo — cliente WPF offline-first, backend de licen
 
 > Projeto construído do zero como **substituto seguro** de um instalador legado analisado por engenharia reversa. Nenhum código, token, senha, endpoint ou binário do fornecedor original é reutilizado — apenas o comportamento funcional foi usado como especificação, e cada anti-padrão identificado no legado está mapeado para um controle aqui (ver seção *Contrato de segurança*).
 
-**Status atual: Fases 0–5 concluídas + empacotamento MSI. Instalador de provisionamento, cliente WPF, backend de licença/update, relatórios por período, auditoria de segurança com evidência e pacote `.msi` (104 arquivos, atalhos, desinstalador) — instalado e desinstalado de verdade nesta máquina. 108 testes verdes, 10 documentos.**
+**Status atual: Fases 0–5 concluídas + empacotamento MSI. Instalador de provisionamento, cliente WPF, backend de licença/update, relatórios por período, auditoria de segurança com evidência e pacote `.msi` (110 arquivos, atalhos, desinstalador) — instalado e desinstalado de verdade nesta máquina. 108 testes verdes, 13 documentos em `docs/`.**
 
 ## Screenshots
 
@@ -84,6 +84,10 @@ landipay/
 | [05 — Testes e segurança](docs/05-testes-seguranca.md) | Unit/integration, testes do validador de update, checklist | ⏳ |
 | [06 — Guia de operação](docs/06-guia-operacao.md) | Instalar, atualizar, suporte, backup | ⏳ |
 | [08 — Referência e gaps](docs/08-referencia-e-gaps.md) | Inventário da pasta REFERENCIA (Gestor/SyntaxPlus), gap analysis por domínio de PDV, priorização P0–P3 e tarefas com gate | ✅ |
+| [00 — Análise reversa](docs/00-analise-reversa.md) | Telas observadas, modelo de dados inferido, catálogo A1–A6 com decisão, mapa de fluxos; evidências em `docs/_evidence/` | ✅ |
+| [05 — MSI](docs/05-msi.md) | SHA-256 do MSI, como gerar, conteúdo instalado, ciclo instalar/desinstalar, pontos de atenção | ✅ |
+| [07 — Inferências](docs/07-inferencias.md) | Tudo que não foi provado por execução, marcado como `(inferência)` | ✅ |
+| [Índice dos mockups](docs/mockups/INDEX.md) | Origem de cada PNG: captura real da aplicação × mockup HTML | ✅ |
 
 ---
 
@@ -98,7 +102,10 @@ start docs/mockups/pdv.html
 start docs/mockups/installer.html
 ```
 
-Os `.png` em `docs/mockups/` são capturas reais desses HTMLs, usadas nos documentos.
+Os `.png` em `docs/mockups/` têm duas origens e o [índice dos mockups](docs/mockups/INDEX.md)
+diz qual é qual: **capturas reais da aplicação em execução** (as usadas como prova de tela, com
+barra de título do Windows) e **renders dos HTMLs acima** (estudo de design, marcados como
+mockup). Nenhuma imagem é apresentada como captura de execução sem ser.
 
 ---
 
@@ -131,8 +138,8 @@ Cadeia de build verificada nesta máquina (comandos executados de verdade, não 
 
 ```bash
 dotnet build -v q --nologo                    # 0 errors, 0 warnings
-dotnet build -v q --nologo                    # 13 projetos, 0 erros, 0 avisos
-dotnet test  -v q --nologo                    # Aprovado: 90, Falha: 0  (94 no total com Desktop.Tests)
+dotnet build -c Release                       # 13 projetos (11 de produção + 2 de teste), 0 erros, 0 avisos
+dotnet test  -c Release                       # Aprovado: 108, Falha: 0  (102 + 6)
 dotnet test tests/Landipay.Desktop.Tests -v q --nologo   # Aprovado: 4, Falha: 0
 dotnet ef migrations add InitialCreate -p src/Landipay.Infrastructure -o Persistence/Migrations
 dotnet ef database update -p src/Landipay.Infrastructure   # aplica no SQLite
@@ -191,16 +198,20 @@ python assets/gerar-assets.py
 Gerar o pacote de distribuição (MSI):
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File packaginguild-msi.ps1
-# → dist\Landipay-1.0.0.msi  (17,1 MB)
+powershell -NoProfile -ExecutionPolicy Bypass -File packaging\build-msi.ps1
+# → dist\\Landipay-1.1.0.msi  (17,9 MB · 110 arquivos · 0 .pdb)
 
-msiexec /i dist\Landipay-1.0.0.msi          # instala por usuário, sem administrador
-msiexec /x dist\Landipay-1.0.0.msi /qn      # desinstala e preserva %APPDATA%\Landipay
+msiexec /i dist\\Landipay-1.1.0.msi          # instala por usuário, sem administrador
+msiexec /x dist\\Landipay-1.1.0.msi /qn      # desinstala e preserva %APPDATA%\\Landipay
+# SHA-256: 180B85957701365F09CBA145C37F284FB091364A97BCCEFC6DC87A46BB701A20
 ```
 
-Instalado e desinstalado nesta máquina: 104 arquivos em `%LOCALAPPDATA%\Landipay`, atalhos na área
-de trabalho e no menu iniciar, entrada em "Aplicativos instalados" e remoção completa no uninstall —
-detalhes e decisões em [docs/04-instalador.md](docs/04-instalador.md) §10.
+Verificado nesta máquina em 11/11/2026: instalação **exit 0** com **110 arquivos** em
+`%LOCALAPPDATA%\\Landipay`, 2 atalhos na área de trabalho + 3 no menu iniciar, entrada
+`Landipay PDV 1.1.0` em "Programas e Recursos" registrada em **x64** (não em `WOW6432Node`),
+desinstalação **exit 0** sem tocar em `%APPDATA%\\Landipay\\landipay.db`. Detalhes, hashes e
+logs em [docs/05-msi.md](docs/05-msi.md); decisões de instalador em
+[docs/04-instalador.md](docs/04-instalador.md) §10.
 
 Build, run e testes serão documentados aqui **com comandos reais e verificados** ao fim de cada fase — nenhum comando placeholder fica neste README.
 
@@ -220,10 +231,10 @@ dotnet test    tests/Landipay.Desktop.Tests -c Release --no-build --logger "trx;
 Os dois `dotnet test` são **separados de propósito**: o nome padrão do `.trx` é `<usuário>_<máquina>_<timestamp com segundos>`, então dois assemblies iniciados no mesmo segundo gravam o mesmo arquivo e um apaga o resultado do outro.
 
 - `-warnaserror`: o projeto está em 0 avisos; se voltar a ter, o gate trava antes de virar dívida.
-- **Gate de contagem:** um passo em PowerShell soma os `.trx` e falha se não forem `TESTES_ESPERADOS` (94) com 0 falhas — "passo verde" passa a significar "94 testes rodaram e passaram", não só "o comando saiu 0". Ao adicionar testes, atualize a variável de ambiente no topo do workflow.
+- **Gate de contagem:** um passo em PowerShell soma os `.trx` e falha se não forem `TESTES_ESPERADOS` (108) com 0 falhas — "passo verde" passa a significar "108 testes rodaram e passaram", não só "o comando saiu 0". Ao adicionar testes, atualize a variável de ambiente no topo do workflow.
 - Os `.trx` e o `resultado.txt` sobem como artefato `resultados-testes`; o resumo da suíte aparece no *Summary* do run.
 - **Primeiro run verde:** [CI #1 — 2min24s](https://github.com/diegotecnico2982002-hue/landipay/actions/runs/43075014767) (checkout, .NET 8, cache, restore, build, testes, artefato: todos `success`).
-- **Run com o gate de contagem:** [CI #2 — 2min38s](https://github.com/diegotecnico2982002-hue/landipay/actions/runs/43076518139) — o passo *Conferir contagem da suíte* passou no runner, ou seja, **94 testes executados e 0 falhas foi verificado pela própria máquina do GitHub**, não por mim.
+- **Run com o gate de contagem:** [CI #2 — 2min38s](https://github.com/diegotecnico2982002-hue/landipay/actions/runs/43076518139) — o passo *Conferir contagem da suíte* passou no runner, ou seja, **contagem da suíte (hoje 108) e 0 falhas foi verificado pela própria máquina do GitHub**, não por mim.
 - **Incidente registrado:** o [run #3](https://github.com/diegotecnico2982002-hue/landipay/actions/runs/43077134173) **falhou** com o passo de testes verde e a contagem em 90 — o segundo assembly sobrescreveu o `.trx` do primeiro, pela colisão de nome descrita acima. É o gate funcionando: sem ele, o verde teria escondido um relatório de 90 testes. Corrigido com nome de arquivo e pasta por assembly.
 - O que o pipeline **não** faz: gerar/assinar o MSI e rodar a varredura de segredos. Cada um tem sua tarefa em [docs/08](docs/08-referencia-e-gaps.md) (P0-9/P0-10 e a varredura de `docs/05` §3).
 
